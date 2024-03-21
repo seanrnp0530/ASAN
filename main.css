@@ -1,0 +1,31 @@
+*{
+    font-family: 'Inter' ;
+    color: #314437 ;
+    text-shadow: 1px 1px white;
+}
+body{
+    background-color: #f1f1f1;
+    opacity: 1;
+    background-image: url("Ellipse\ Owner\ &\ Buyer.png");
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+}
+form{
+    background-color: #E0DEDE;
+    width: 235px;
+    height: auto;
+    padding: 75px 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+img{
+    display:block;
+    padding-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}
