@@ -1,32 +1,26 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-
-            <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-
-            <title>
-                SIGN IN & SIGN UP
-            </title>
-            <link rel = "stylesheet" href = "main.css"
-        </head>
-        <body>
-            <form>
-                <img src = "Project Asana Logo (Pictorial Mark_Symbol).png" alt = "Project ASAN logo">
-
-                <h1> WELCOME! </h1>
-
-                <p> Sign in with your Litter credentials </p>
-
-                <div class="flex-container">
-                    <input type = "text" placeholder = "Username">
-                </div>
-
-                <div class="flex-container">
-                    <input type = "password" placeholder = "Password">
-                </div>
-
-                <input type = "submit" value = "LOG IN">
-                
-            </form>
-        </body>
-    </html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="login-container">
+    <form class="login-form">
+      <img src="Vector 21.svg" alt="Project ASAN Logo" class="center">
+      <h2>WELCOME!</h2>
+      <h2 class="reminder">Sign in with your ASAN credentials</h2>
+      <div class="input-group">
+        <input type="text" id="username" placeholder="Username" required>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <button type="submit">LOG IN</button>
+    </form>
+  </div>
+</body>
+</html>
