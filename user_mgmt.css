@@ -1,0 +1,254 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Inter';
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+  font: 22px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(243, 243, 243);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #314536;
+  color: white;
+  padding: 20px 20px;
+}
+
+.navbar-logo {
+  margin-right: 40px;
+}
+
+.navbar-logo img {
+  filter: brightness(400%);
+  height: 40px;
+  position: fixed;
+  left: 50px;
+  top: 20px;
+}
+
+.project-asana{
+  position: fixed;
+  left: 100px;
+  top: 0;
+  padding-bottom: 60px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.administration {
+  position: fixed;
+  left: 95px;
+  top: 10px;
+  padding-top: 20px ;
+  font-size: 15;
+}
+
+/* Style the search field */
+form.search input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #ffffff;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/* submit button style */
+form.search button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #4e7057;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.search-bar {
+  width: 25%;
+}
+
+.search-bar {
+  position: absolute;
+  left: 350px;
+}
+
+form.example button:hover {
+  background:#314536;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.logout-btn {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn i {
+  margin-right: 10px;
+}
+
+.logout-btn:hover {
+  background-color: #ccc;
+}
+
+.sidebar {
+  position: fixed;
+  width: 300px;
+  height: 200vh;
+  background-color: #4e7057;
+  padding: 20px 0 0 0;
+  font-weight: bold;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar a {
+  color: white;
+  font-size: x-large;
+  text-decoration: none;
+  display: block;
+  padding: 30px 0px 30px 50px;
+}
+
+.sidebar li:hover {
+  background-color: #314536;
+  border: solid white 1px;
+}
+
+.users {
+  padding: 0px;
+  background-color: #314536;
+  border: solid white 1px;
+}
+
+.sidebar i {
+  padding-right: 30px;
+  font-size: 30px;
+}
+
+.center-nav {
+  margin: 40px 350px;
+  width: 500px;
+}
+
+.user-selection button {
+  text-align: center;
+  background-color: white;
+  border: none;
+  font-size: large;  
+  padding: 20px 40px;
+  margin: -3px;
+  box-shadow: 3px 3px 3px gray;
+}
+
+.user-selection button:hover {
+  border-bottom: solid #314536 5px;
+}
+
+.all button {
+  border-bottom: solid #314536 5px; 
+}
+
+.selected-all {
+  display: flex;
+  align-items: center;
+}
+
+.selected-all p {
+  font-size:xx-large;
+  color: #314536;
+  font-weight: bold;
+}
+
+.selected-all button {
+  margin-left: 100px;
+  background-color: #314536;
+  color: white;
+  padding: 10px 50px;
+  border-radius: 5px;
+  font-size: medium;
+}
+
+.total-users p {
+  position: absolute;
+  right: 90px;
+  top: 190px;
+  font-size: large;
+  color: #314536;
+  font-weight: bold;
+}
+
+.data-table th, td {
+  border: 1px solid rgb(234, 231, 231);
+  padding: 20px 70px;
+  white-space: nowrap;
+}
+
+.data-table th {
+  font-size: larger;
+  color: gray;
+}
+
+.data-table table {
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.edit-btn {
+  font-size: larger;
+  background-color: #314536;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.delete-btn {
+  font-size: larger;
+  background-color: #8b0000;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.data-table button {
+  margin: 0px 5px ;
+}
+
