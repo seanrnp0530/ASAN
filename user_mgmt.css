@@ -1,12 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 * {
   box-sizing: border-box;
   font-family: 'Inter';
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
 body {
-  font: 22px;
+  font: 16px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -19,42 +19,42 @@ body {
   align-items: center;
   background-color: #314536;
   color: white;
-  padding: 20px 20px;
+  padding: 20px 10px;
 }
 
 .navbar-logo {
-  margin-right: 40px;
+  margin-right: 10px;
 }
 
 .navbar-logo img {
   filter: brightness(400%);
-  height: 40px;
+  height: 35px;
   position: fixed;
-  left: 50px;
+  left: 25px;
   top: 20px;
 }
 
 .project-asana{
   position: fixed;
-  left: 100px;
+  left: 60px;
   top: 0;
   padding-bottom: 60px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .administration {
   position: fixed;
-  left: 95px;
-  top: 10px;
-  padding-top: 20px ;
-  font-size: 15;
+  left: 60px;
+  top: 13px;
+  padding-top: 13px ;
+  font-size: 13px;
 }
 
-/* Style the search field */
+/* Search field */
 form.search input[type=text] {
   padding: 10px;
-  font-size: 17px;
+  font-size: 13px;
   border: 1px solid grey;
   float: left;
   width: 80%;
@@ -63,14 +63,14 @@ form.search input[type=text] {
   border-bottom-left-radius: 5px;
 }
 
-/* submit button style */
+/* Submit button style */
 form.search button {
   float: left;
   width: 20%;
   padding: 10px;
   background: #4e7057;
   color: white;
-  font-size: 17px;
+  font-size: 13px;
   border: 1px solid grey;
   border-left: none; /* Prevent double borders */
   cursor: pointer;
@@ -84,7 +84,7 @@ form.search button {
 
 .search-bar {
   position: absolute;
-  left: 350px;
+  left: 250px;
 }
 
 form.example button:hover {
@@ -99,6 +99,7 @@ form.example::after {
 }
 
 .logout-btn {
+  font-size: 13px;
   padding: 10px 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -119,7 +120,7 @@ form.example::after {
 
 .sidebar {
   position: fixed;
-  width: 300px;
+  width: 200px;
   height: 200vh;
   background-color: #4e7057;
   padding: 20px 0 0 0;
@@ -139,10 +140,9 @@ form.example::after {
 
 .sidebar a {
   color: white;
-  font-size: x-large;
   text-decoration: none;
   display: block;
-  padding: 30px 0px 30px 50px;
+  padding: 10px 0px 20px 30px;
 }
 
 .sidebar li:hover {
@@ -158,26 +158,27 @@ form.example::after {
 
 .sidebar i {
   padding-right: 30px;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .center-nav {
-  margin: 40px 350px;
-  width: 500px;
+  margin: 30px 230px;
+  width: 300px;
 }
 
 .user-selection button {
   text-align: center;
   background-color: white;
   border: none;
-  font-size: large;  
-  padding: 20px 40px;
+  font-size: x-small;
+  font-weight: bold;
+  padding: 10px 20px;
   margin: -3px;
   box-shadow: 3px 3px 3px gray;
 }
 
 .user-selection button:hover {
-  border-bottom: solid #314536 5px;
+  border-bottom: solid #314536 2px;
 }
 
 .all button {
@@ -190,37 +191,34 @@ form.example::after {
 }
 
 .selected-all p {
-  font-size:xx-large;
   color: #314536;
   font-weight: bold;
 }
 
 .selected-all button {
-  margin-left: 100px;
+  margin-left: 50px;
   background-color: #314536;
   color: white;
-  padding: 10px 50px;
-  border-radius: 5px;
-  font-size: medium;
+  padding: 5px 20px;
+  border-radius: 10px;
 }
 
 .total-users p {
   position: absolute;
-  right: 90px;
-  top: 190px;
-  font-size: large;
+  right: 20px;
+  top: 135px;
   color: #314536;
   font-weight: bold;
 }
 
 .data-table th, td {
   border: 1px solid rgb(234, 231, 231);
-  padding: 20px 70px;
+  padding: 5px 30px;
   white-space: nowrap;
 }
 
 .data-table th {
-  font-size: larger;
+  font-size: smaller;
   color: gray;
 }
 
@@ -231,19 +229,19 @@ form.example::after {
 }
 
 .edit-btn {
-  font-size: larger;
+  font-size: x-small;
   background-color: #314536;
   color: white;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   border: none;
 }
 
 .delete-btn {
-  font-size: larger;
+  font-size: x-small;
   background-color: #8b0000;
   color: white;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   border: none;
 }
@@ -252,3 +250,43 @@ form.example::after {
   margin: 0px 5px ;
 }
 
+
+
+/* Hamburger menu styles
+.hamburger-menu {
+  display: none; 
+  cursor: pointer;
+  padding: 15px;
+  color: white;
+}
+
+.hamburger-menu div {
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+  }
+
+  .sidebar {
+    left: -250px; 
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+  }
+}
+*/
