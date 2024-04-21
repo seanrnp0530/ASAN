@@ -9,15 +9,15 @@
 </head>
 <body>
   <div class="login-container">
-    <form class="login-form">
+    <form class="login-form" action="login.php" method="post">
       <img src="Vector 21.svg" alt="Project ASAN Logo" class="center">
       <h2>WELCOME!</h2>
       <h2 class="reminder">Sign in with your ASAN credentials</h2>
       <div class="input-group">
-        <input type="text" id="username" placeholder="Username" required>
+        <input type="text" name="username" id="username" placeholder="Username" required>
       </div>
       <div class="input-group">
-        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
       </div>
       <button type="submit">LOG IN</button>
     </form>
