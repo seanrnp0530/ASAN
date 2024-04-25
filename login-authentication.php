@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 } else {
     // If the request method is not POST, redirect to the login page
-    header("Location: index.html");
+    header("Location: login-authentication.html");
     exit;
 }
 ?>
