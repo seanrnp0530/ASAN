@@ -196,116 +196,93 @@ form.example::after {
   font-weight: bold;
 }
 
-.data-table {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.data-table th,
-td {
-  border: 1px solid rgb(234, 231, 231);
-  padding: 5px 30px;
-  white-space: nowrap;
-  text-align: center;
-}
-
-.data-table th {
-  font-size: 1.15rem;
-  color: #bac3bc;
-}
-
-.data-table table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: white;
-  border-radius: 20px;
-}
-
-.edit-btn {
-  font-size: 1rem;
-  background-color: #0026ae;
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 5px;
-  border: none;
-}
-
-.accept-btn {
-  font-size: 1rem;
-  background-color: #314437;
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 5px;
-  border: none;
-}
-
-.delete-btn {
-  font-size: 1rem;
-  background-color: #aa1515;
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 5px;
-  border: none;
-}
-
-.data-table button {
-  margin: 0px 5px;
-}
-
-.user-selection {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: space-between;
-  width: 100%;
-  color: #758b7c;
-}
-
-.review {
-  justify-self: end;
-  align-self: center;
-}
-
 .review-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #758b7c;
+  color: #314437;
   margin: 0;
 }
 
 .review-total {
-  font-weight: 600;
-  font-size: 2.5rem;
+  font-weight: 300;
+  font-size: 1.5rem;
   color: #314437;
   margin: 0;
-  text-align: right;
 }
 
-.bottom-pagination {
+.container {
   display: grid;
-  justify-content: end;
-  margin-top: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  padding: 0rem 1rem;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.semi-container {
+  padding: 0rem 1rem;
 }
 
-.pagination a {
+.review-image {
+  padding-top: 1rem;
+}
+
+.review-semiTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
   color: #314437;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
+  margin: 0;
+}
+
+.review-address {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #314437;
+  margin: 0;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 1rem;
+}
+
+.user-selection {
+  background-color: white;
+  border: 1px solid rgb(234, 231, 231);
+  border-radius: 0.5rem;
+  padding: 0rem 2.5rem;
+}
+
+.btn-back {
+  font-size: 1.5rem;
+  background-color: #758b7c;
+  color: white;
+  padding: 0.6rem 2.75rem;
+  border-radius: 5px;
+  border: none;
   font-weight: 600;
 }
 
-.pagination-title {
-  color: #314437;
+.btn-reject {
+  font-size: 1.5rem;
+  background-color: #aa1515;
+  color: white;
+  padding: 0.6rem 2.5rem;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
 }
 
-.pagination .highlight {
-  background-color: #e0e0e0;
-  color: #314437;
+.btn-wrapper {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.btn-approve {
+  font-size: 1.5rem;
+  background-color: #314437;
+  color: white;
+  padding: 0.6rem 1.8rem;
+  border-radius: 5px;
+  border: none;
   font-weight: 600;
 }
