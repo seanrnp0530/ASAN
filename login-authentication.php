@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
         if ($password === $user['password']) {
             // Password is correct, login successful
-            echo json_encode(array("message" => "Login successful"));
+            header("Location: user_mgmt.html");
         } else {
             // Password is incorrect
             echo json_encode(array("error" => "Invalid password"));
