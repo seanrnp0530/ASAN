@@ -72,28 +72,29 @@
         </div>
       </div>
 
-      <div class="flex flex-col flex-auto bg-eggshell?">
-        
+      <div class="flex flex-col overflow-hidden">
+      <div class="bg-eggshell justify-center">
         <div class="mt-5 ml-5 flex">
           <input type="text" id="search-bar" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Search...">
         </div>  
         
-        <div class="flex flex-row mt-10 ml-10 w-68 justify-between shadow-2xl">
-          <table class="shadow-xl my-auto justify-center items-center h-25">
-            <thead class="text-white">
+        <div class="flex flex-row mt-10 justify-center items-center shadow-md text-green-dark">
+          <table>
+            <thead class="text-gray">
               <tr>
-                <th class="px-9 py-3 bg-green-dark">Name</th>
-                <th class="px-6 py-3 bg-green-dark">Contact #</th>
-                <th class="px-6 py-3 bg-green-dark">Email</th>
-                <th class="px-6 py-3 bg-green-dark">Role</th>
-                <th class="px-6 py-3 bg-green-dark">Actions</th>
+                <th class="px-9 py-3 bg-white">Picture</th>
+                <th class="px-9 py-3 bg-white">Name</th>
+                <th class="px-6 py-3 bg-white">Contact #</th>
+                <th class="px-6 py-3 bg-white">Email</th>
+                <th class="px-6 py-3 bg-white">Role</th>
+                <th class="px-6 py-3 bg-white">Actions</th>
               </tr>
             </thead>
               <tbody id="table-body">
               </tbody>
           </table>
         </div>
-      
+      </div>
       </div>
     </div>
 
@@ -107,96 +108,96 @@
 
     <script>
       const searchBar = document.getElementById('search-bar');
-const tableBody = document.getElementById('table-body');
+      const tableBody = document.getElementById('table-body');
 
-// Sample data (replace with your actual data)
-const data = [
-  {
-    name: 'Sean Raphael',
-    contact: '09090909090',
-    email: 'sean.sean@sean.com',
-    role: 'Admin',
-    actions: `
-      <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
-      <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
-    `,
-  },
 
-  {
-    name: 'Sean Raphael',
-    contact: '09090909090',
-    email: 'sean.ss@sjmt.com',
-    role: 'Admin',
-    actions: `
-      <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
-      <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
-    `,
-  },
+      const data = [
+      {
+        picture: `<div class="flex justify-center items-center"><img src="https://i.pinimg.com/736x/1b/95/0f/1b950f2c32cafcee5b2d81db969442f4.jpg" class="w-12 h-12"></div>`,
+        name: 'Sean Raphael',
+        contact: '09090909090',
+        email: 'sean.sean@sean.com',
+        role: 'Admin',
+        actions: `
+          <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
+          <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
+        `,
+      },
 
-  {
-    name: 'Sean Josephine',
-    contact: '09090909090',
-    email: 'sean.sean@ss.com',
-    role: 'Admin',
-    actions: `
-      <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
-      <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
-    `,
-  },
+      {
+        picture: `<div class="flex justify-center items-center"><img src="https://i.pinimg.com/736x/1b/95/0f/1b950f2c32cafcee5b2d81db969442f4.jpg" class="w-12 h-12"></div>`,
+        name: 'Shekinah Josephine',
+        contact: '09090909090',
+        email: 'sean.ss@sjmt.com',
+        role: 'Owner',
+        actions: `
+          <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
+          <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
+        `,
+      },
+
+      {
+        picture: `<div class="flex justify-center items-center"><img src="https://i.pinimg.com/736x/1b/95/0f/1b950f2c32cafcee5b2d81db969442f4.jpg" class="w-12 h-12"></div>`,
+        name: 'Sean Josephine',
+        contact: '09090909090',
+        email: 'sean.sean@ss.com',
+        role: 'Admin',
+        actions: `
+          <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
+          <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
+        `,
+      },
   
-  {
-    name: 'Shek Raphael',
-    contact: '09090909090',
-    email: 'sean.srnp@sean.com',
-    role: 'Admin',
-    actions: `
-      <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
-      <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
-    `,
-  },
+      {
+        picture: `<div class="flex justify-center items-center"><img src="https://i.pinimg.com/736x/1b/95/0f/1b950f2c32cafcee5b2d81db969442f4.jpg" class="w-12 h-12"></div>`,
+        name: 'Shekinah Raphael',
+        contact: '09090909090',
+        email: 'sean.srnp@sean.com',
+        role: 'Buyer', 
+        actions: `
+          <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
+          <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
+        `,
+      },
+      ];
 
-    
-  // Add more objects here for other users
-];
+      function filterUsers(searchTerm) {
+        const lowercaseSearchTerm = searchTerm.toLowerCase();
+          return data.filter(item => {
+            const name = item.name.toLowerCase();
+            const role = item.role.toLowerCase();
+            return name.includes(lowercaseSearchTerm) || role.includes(lowercaseSearchTerm);
+        });
+      }
 
-function filterUsers(searchTerm) {
-  const lowercaseSearchTerm = searchTerm.toLowerCase();
-  return data.filter(item => {
-    const name = item.name.toLowerCase();
-    const email = item.email.toLowerCase();
-    return name.includes(lowercaseSearchTerm) || email.includes(lowercaseSearchTerm);
-  });
-}
+      function renderTable(filteredData) {
+        tableBody.innerHTML = '';
 
-function renderTable(filteredData) {
-  tableBody.innerHTML = ''; // Clear existing rows
+        filteredData.forEach(item => {
+          const row = document.createElement('tr');
+          row.classList.add('border-b', 'border-gray-300', 'hover:bg-gray-100');
 
-  filteredData.forEach(item => {
-    const row = document.createElement('tr');
-    row.classList.add('border-b', 'border-gray-300', 'hover:bg-gray-100');
+          row.innerHTML = `
+            <td class="px-4 py-2">${item.picture}</td>
+            <td class="px-4 py-2">${item.name}</td>
+            <td class="px-4 py-2">${item.contact}</td>
+            <td class="px-4 py-2">${item.email}</td>
+            <td class="px-4 py-2">${item.role}</td>
+            <td class="px-4 py-2">${item.actions}</td>
+          `;
 
-    row.innerHTML = `
-      <td class="px-4 py-2">${item.name}</td>
-      <td class="px-4 py-2">${item.contact}</td>
-      <td class="px-4 py-2">${item.email}</td>
-      <td class="px-4 py-2">${item.role}</td>
-      <td class="px-4 py-2">${item.actions}</td>
-    `;
+        tableBody.appendChild(row);
+        });
+      }
 
-    tableBody.appendChild(row);
-  });
-}
+      renderTable(data);
 
-// Initial render
-renderTable(data);
-
-searchBar.addEventListener('keyup', () => {
-  const searchTerm = searchBar.value;
-  const filteredData = filterUsers(searchTerm);
-  renderTable(filteredData);
-});
+      searchBar.addEventListener('keyup', () => {
+        const searchTerm = searchBar.value;
+        const filteredData = filterUsers(searchTerm);
+        renderTable(filteredData);
+        });
     </script>
-
   </body>
 </html>
 

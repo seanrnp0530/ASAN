@@ -5,9 +5,9 @@ module.exports = {
     colors: {
       "green-dark": "#314536",
       "light-green": "#758B7C",
+      "eggshell": "#F9F4F4",
       white: "#ffffff",
       gray: "#989C9A",
-      "eggshell?": "#F9F4F4",
       xanadu: {
         50: "#f6f7f6",
         100: "#e0e7e1",
