@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="output.css" />
   </head>
   <body>
-    
     <nav class="bg-green-dark flex justify-between items-center w-full">
       <div class="px-12 py-8 flex items-start">
         <div class="flex items-center">
@@ -41,7 +40,7 @@
       <div class="flex flex-row h-screen w-64 bg-xanadu-400 text-white">
         <div class="flex flex-col flex-auto">
           
-          <div class="pl-5 py-4 mt-10 text-sm flex items-center hover:bg-green-dark hover:border-y-2 border-white">
+          <div class="pl-5 py-4 mt-10 text-sm flex items-center bg-green-dark border-t-2 border-b-2">
             <svg class="w-12 h-12 mr-2" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
               <path d="M18.045 3.007 12.31 3a1.965 1.965 0 0 0-1.4.585l-7.33 7.394a2 2 0 0 0 0 2.805l6.573 6.631a1.957 1.957 0 0 0 1.4.585 1.965 1.965 0 0 0 1.4-.585l7.409-7.477A2 2 0 0 0 21 11.479v-5.5a2.972 2.972 0 0 0-2.955-2.972Zm-2.452 6.438a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
             </svg>                      
@@ -73,132 +72,39 @@
       </div>
 
       <div class="flex flex-col overflow-hidden">
-      <div class="bg-eggshell justify-center">
-        <div class="mt-5 ml-5 flex">
-          <input type="text" id="search-bar" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Search...">
-        </div>  
+        <div class="bg-eggshell justify-center">
+          <div class="mt-5 ml-5 flex">
+            <input type="text" id="search-bar" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Search...">
+          </div>  
         
-        <div class="flex flex-row mt-10 justify-center items-center shadow-md text-green-dark">
-          <table>
-            <thead class="text-gray">
-              <tr>
-                <th class="px-9 py-3 bg-white">Picture</th>
-                <th class="px-9 py-3 bg-white">Name</th>
-                <th class="px-6 py-3 bg-white">Contact #</th>
-                <th class="px-6 py-3 bg-white">Email</th>
-                <th class="px-6 py-3 bg-white">Role</th>
-                <th class="px-6 py-3 bg-white">Actions</th>
-              </tr>
-            </thead>
-              <tbody id="table-body">
-              </tbody>
-          </table>
+          <div class="flex flex-row mt-10 justify-center items-center mx-auto shadow-md text-green-dark">
+            <table>
+              <thead>
+                <tr>
+                  <th class="px-20 py-3 bg-green-dark text-white">Picture</th>
+                  <th class="px-20 py-3 bg-green-dark text-white">Name</th>
+                  <th class="px-20 py-3 bg-green-dark text-white">Email</th>
+                  <th class="px-20 py-3 bg-green-dark text-white">Role</th>
+                  <th class="px-20 py-3 bg-green-dark text-white">Actions</th>
+                </tr>
+              </thead>
+                <tbody id="table-body">
+                  <?php
+                    include ("fetch_data.php");
+                  ?>
+                </tbody>
+            </table>
+          </div>
+
+          <div class="flex justify-center mt-5 mb-5">
+                <div class="pagination" id="pagination-controls">
+                <?php
+                    include ("pagination_controls.php");
+                  ?>
+                </div>
+            </div>
         </div>
       </div>
-      </div>
-    </div>
-
-        
-    </div>
-
-        
-      
-
-    </div>
-
-    <script>
-      const searchBar = document.getElementById('search-bar');
-      const tableBody = document.getElementById('table-body');
-
-
-      const data = [
-      {
-        picture: `<div class="flex justify-center items-center"><img src="https://i.pinimg.com/736x/1b/95/0f/1b950f2c32cafcee5b2d81db969442f4.jpg" class="w-12 h-12"></div>`,
-        name: 'Sean Raphael',
-        contact: '09090909090',
-        email: 'sean.sean@sean.com',
-        role: 'Admin',
-        actions: `
-          <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
-          <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
-        `,
-      },
-
-      {
-        picture: `<div class="flex justify-center items-center"><img src="https://i.pinimg.com/736x/1b/95/0f/1b950f2c32cafcee5b2d81db969442f4.jpg" class="w-12 h-12"></div>`,
-        name: 'Shekinah Josephine',
-        contact: '09090909090',
-        email: 'sean.ss@sjmt.com',
-        role: 'Owner',
-        actions: `
-          <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
-          <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
-        `,
-      },
-
-      {
-        picture: `<div class="flex justify-center items-center"><img src="https://i.pinimg.com/736x/1b/95/0f/1b950f2c32cafcee5b2d81db969442f4.jpg" class="w-12 h-12"></div>`,
-        name: 'Sean Josephine',
-        contact: '09090909090',
-        email: 'sean.sean@ss.com',
-        role: 'Admin',
-        actions: `
-          <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
-          <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
-        `,
-      },
-  
-      {
-        picture: `<div class="flex justify-center items-center"><img src="https://i.pinimg.com/736x/1b/95/0f/1b950f2c32cafcee5b2d81db969442f4.jpg" class="w-12 h-12"></div>`,
-        name: 'Shekinah Raphael',
-        contact: '09090909090',
-        email: 'sean.srnp@sean.com',
-        role: 'Buyer', 
-        actions: `
-          <button class="px-2 py-1 text-blue-500 hover:text-blue-700">Modify</button>
-          <button class="px-2 py-1 text-red-500 hover:text-red-700">Delete</button>
-        `,
-      },
-      ];
-
-      function filterUsers(searchTerm) {
-        const lowercaseSearchTerm = searchTerm.toLowerCase();
-          return data.filter(item => {
-            const name = item.name.toLowerCase();
-            const role = item.role.toLowerCase();
-            return name.includes(lowercaseSearchTerm) || role.includes(lowercaseSearchTerm);
-        });
-      }
-
-      function renderTable(filteredData) {
-        tableBody.innerHTML = '';
-
-        filteredData.forEach(item => {
-          const row = document.createElement('tr');
-          row.classList.add('border-b', 'border-gray-300', 'hover:bg-gray-100');
-
-          row.innerHTML = `
-            <td class="px-4 py-2">${item.picture}</td>
-            <td class="px-4 py-2">${item.name}</td>
-            <td class="px-4 py-2">${item.contact}</td>
-            <td class="px-4 py-2">${item.email}</td>
-            <td class="px-4 py-2">${item.role}</td>
-            <td class="px-4 py-2">${item.actions}</td>
-          `;
-
-        tableBody.appendChild(row);
-        });
-      }
-
-      renderTable(data);
-
-      searchBar.addEventListener('keyup', () => {
-        const searchTerm = searchBar.value;
-        const filteredData = filterUsers(searchTerm);
-        renderTable(filteredData);
-        });
-    </script>
+    </div>  
   </body>
 </html>
-
-
