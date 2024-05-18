@@ -88,7 +88,16 @@
               <input type="text" name="role" class="px-4 py-2 w-44 rounded-md border border-gray-300" placeholder="Role" required>
               <button type="submit" class="px-4 py-2 bg-green-dark text-white rounded-md">Submit</button>
           </form>
-        
+
+          <form id="editRecordForm" action="edit_record.php" method="POST" class="mt-5 ml-5 space-y-4" style="display:none;">
+            <input type="hidden" name="id" id="edit-id">
+            <input type="text" name="picture" id="edit-picture" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Image Link" required>
+            <input type="text" name="name" id="edit-name" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Name" required>
+            <input type="email" name="email" id="edit-email" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Email" required>
+            <input type="text" name="role" id="edit-role" class="px-4 py-2 w-44 rounded-md border border-gray-300" placeholder="Role" required>
+            <button type="submit" class="px-4 py-2 bg-green-dark text-white rounded-md">Submit</button>
+          </form>
+
           <div class="flex flex-row mt-5 justify-center items-center mx-auto shadow-md text-green-dark">
             <table>
               <thead>
@@ -123,11 +132,21 @@
 
 <script>
         function toggleForm() {
-            var form = document.getElementById('addRecordForm');
-            if (form.style.display === 'none' || form.style.display === '') {
-                form.style.display = 'block';
-            } else {
-                form.style.display = 'none';
-            }
-        }
-    </script>
+    var form = document.getElementById('addRecordForm');
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';
+    } else {
+        form.style.display = 'none';
+    }
+}
+
+function editRecord(id, picture, name, email, role) {
+    document.getElementById('edit-id').value = id;
+    document.getElementById('edit-picture').value = picture;
+    document.getElementById('edit-name').value = name;
+    document.getElementById('edit-email').value = email;
+    document.getElementById('edit-role').value = role;
+    document.getElementById('editRecordForm').style.display = 'block';
+}
+
+</script>
