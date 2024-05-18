@@ -42,4 +42,4 @@ if ($current_page < $total_pages) {
     echo '<a href="?page=' . ($current_page + 1) . '" class="bg-gray-300 text-green-dark px-3 py-1 mx-1 rounded">Next &raquo;</a>';
 }
 echo '</div>';
-?>
+

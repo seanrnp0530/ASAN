@@ -75,9 +75,21 @@
         <div class="bg-eggshell justify-center">
           <div class="mt-5 ml-5 flex">
             <input type="text" id="search-bar" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Search...">
-          </div>  
+            </div>
+          
+          <div class="mt-5 ml-5 flex">
+            <button class="px-4 py-2 bg-green-dark text-white rounded-md" onclick="toggleForm()">Add Record</button>
+          </div>
+
+          <form id="addRecordForm" action="add_record.php" method="POST" class="mt-5 ml-5 space-y-4" style="display:none;">
+              <input type="text" name="picture" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Image Link" required>
+              <input type="text" name="name" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Name" required>
+              <input type="email" name="email" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Email" required>
+              <input type="text" name="role" class="px-4 py-2 w-44 rounded-md border border-gray-300" placeholder="Role" required>
+              <button type="submit" class="px-4 py-2 bg-green-dark text-white rounded-md">Submit</button>
+          </form>
         
-          <div class="flex flex-row mt-10 justify-center items-center mx-auto shadow-md text-green-dark">
+          <div class="flex flex-row mt-5 justify-center items-center mx-auto shadow-md text-green-dark">
             <table>
               <thead>
                 <tr>
@@ -96,7 +108,7 @@
             </table>
           </div>
 
-          <div class="flex justify-center mt-5 mb-5">
+          <div class="flex mt-5 mb-5 justify-end">
                 <div class="pagination" id="pagination-controls">
                 <?php
                     include ("pagination_controls.php");
@@ -108,3 +120,14 @@
     </div>  
   </body>
 </html>
+
+<script>
+        function toggleForm() {
+            var form = document.getElementById('addRecordForm');
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+    </script>
