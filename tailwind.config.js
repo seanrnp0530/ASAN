@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./user-mgmt/*.{html,js}"],
+  content: ["./user-mgmt/*.{html,js,php}"],
   theme: {
     colors: {
       "green-dark": "#314536",
