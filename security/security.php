@@ -71,16 +71,41 @@
         </div>
       </div>
 
-      <div class="flex flex-col items-center justify-center flex-1 bg-eggshell p-8">
-      <div class="bg-white p-12 rounded-lg shadow-md w-full max-w-lg flex justify-end">
-        <form action="edit_password.php" method="post" class="space-y-6 w-full max-w-md">
-            
-            <button type="submit" class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                Change Password
-            </button>
-        </form>
+
+      <div class="flex flex-col flex-1 bg-eggshell p-8">
+  <h2 class="text-start text-2xl font-bold mb-6 font-Inter text-green-dark">Change Password</h2>
+  <div class="bg-white p-12 rounded-lg shadow-md w-full max-w-5xl max-h-5xl flex justify-center items-center">
+    <form action="edit_password.php" method="post" class="space-y-6 max-w-md flex flex-col justify-between"> <!-- Moved max-w-md class to form -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="text-center">
+          <p class="flex items-center justify-end h-full text-green-dark font-Inter">Username</p>
+        </div>
+        <input type="text" name="username" placeholder="Username" class="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-green-500" required>
+        
+        <div class="text-center">
+          <p class="flex items-center justify-end h-full text-green-dark font-Inter">Old Password</p>
+        </div>
+        <input type="text" name="old_password" placeholder="Old Password" class="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-green-500" required>
+        
+        <div class="text-center">
+          <p class="flex items-center justify-end h-full text-green-dark font-Inter">New Password</p>
+        </div>
+        <input type="password" name="new_password" placeholder="New Password" class="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-green-500" required>
+        
+        <div class="text-center">
+          <p class="flex items-center justify-end h-full text-green-dark font-Inter">Confirm New Password</p>
+        </div>
+        <input type="password" name="confirm_password" placeholder="Confirm New Password" class="w-full bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-green-500" required>
       </div>
-    </div>
+      
+      <div class="mt-auto flex justify-end">
+        <button type="submit" class="bg-green-dark text-white py-2 px-4 rounded-md hover:bg-xanadu-300 hover:text-green-dark font-Inter">Change Password</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
 
     </div>  
   </body>

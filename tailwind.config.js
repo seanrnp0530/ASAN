@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./security/*.{html,js}"],
+  content: ["./security/*.{html,js,php}"],
   theme: {
     colors: {
       "green-dark": "#314536",
