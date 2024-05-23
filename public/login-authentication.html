@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASAN - Login Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+ 
+</head>
+<body>
+  <div class="form-container">
+    <form class="login-form" action="login-authentication.php" method="post">
+      <img src="/asan_img/Vector 21.svg" alt="Project ASAN Logo" class="mx-auto mb-4 w-24 h-24">
+      <h2 class="text-3xl font-bold text-white text-center mb-4">WELCOME!</h2>
+      <h2 class="text-sm text-gray-600 text-center mb-6">Sign in with your ASAN credentials</h2>
+      <div class="form-group">
+        <input type="text" name="username" id="username" placeholder=" ">
+        <label for="username">Username</label>
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" id="password" placeholder=" ">
+        <label for="password">Password</label>
+      </div>
+      <button type="submit" class="btn-login w-full">LOG IN</button>
+    </form>
+  </div>
+</body>
+</html>
