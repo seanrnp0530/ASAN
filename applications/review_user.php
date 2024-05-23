@@ -84,96 +84,95 @@
       </div>
 
       <div class="flex flex-col flex-1 bg-white p-8 items-center">
-  <!-- Personal Info & Photo Header -->
-  <div class="mt-5 mb-4 text-green-dark">
-    <h2 class="text-2xl font-bold text-center">PERSONAL INFORMATION</h2>
-  </div>
+        <!-- Personal Info & Photo Header -->
+        <div class="mt-5 mb-4 text-green-dark">
+          <h2 class="text-2xl font-bold text-center">PERSONAL INFORMATION</h2>
+        </div>
 
-  <!-- Personal Info Table -->
-  <div class="flex flex-row text-green-dark mb-10 justify-center w-full">
-    <table class="w-full text-center shadow-md" style="box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);">
-      <thead>
-        <tr>
-          <th class="px-4 py-2 font-Inter font-bold bg-white text-green-dark">Name</th>
-          <th class="px-4 py-2 font-Inter font-bold bg-white text-green-dark">Email</th>
-          <th class="px-4 py-2 font-Inter font-bold bg-white text-green-dark">Birth Date</th>
-          <th class="px-4 py-2 font-Inter font-bold bg-white text-green-dark">ID Type</th>
-          <th class="px-4 py-2 font-Inter font-bold bg-white text-green-dark">Address</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="px-4 py-2 font-Inter"><?php echo $fullname; ?></td>
-          <td class="px-4 py-2 font-Inter"><?php echo $email; ?></td>
-          <td class="px-4 py-2 font-Inter"><?php echo $date_of_birth; ?></td>
-          <td class="px-4 py-2 font-Inter"><?php echo $id_type; ?></td>
-          <td class="px-4 py-2 font-Inter"><?php echo $id_address; ?></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>       
+        <!-- Personal Info Table -->
+        <div class="flex flex-row text-green-dark mb-10 justify-center w-full">
+          <table class="w-full text-center shadow-md" style="box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);">
+            <thead>
+              <tr>
+                <th class="px-4 py-2 font-Inter font-bold bg-white text-green-dark">Name</th>
+                <th class="px-4 py-2 font-Inter font-bold bg-white text-green-dark">Email</th>
+                <th class="px-4 py-2 font-Inter font-bold bg-white text-green-dark">Birth Date</th>
+                <th class="px-4 py-2 font-Inter font-bold bg-white text-green-dark">ID Type</th>
+                <th class="px-4 py-2 font-Inter font-bold bg-white text-green-dark">Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-4 py-2 font-Inter"><?php echo $fullname; ?></td>
+                <td class="px-4 py-2 font-Inter"><?php echo $email; ?></td>
+                <td class="px-4 py-2 font-Inter"><?php echo $date_of_birth; ?></td>
+                <td class="px-4 py-2 font-Inter"><?php echo $id_type; ?></td>
+                <td class="px-4 py-2 font-Inter"><?php echo $id_address; ?></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>       
 
-  <!-- Image Tables Container -->
-  <div class="flex flex-row space-x-5 shadow-md text-green-dark justify-center w-full">
-    <!-- User Photo Table -->
-    <div class="w-1/2 flex justify-center">
-      <table class="w-full text-center">
-        <thead>
-          <tr>
-            <th class="px-4 py-2 text-2xl font-Inter font-bold bg-white text-green-dark">USER IMAGE</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="px-4 py-2">
-              <img class="max-w-80 max-h-80 mx-auto" src="<?php echo $profile_image; ?>" alt="Profile Image">
-            </td>
-          </tr>
-        </tbody>
-      </table>
+        <!-- Image Tables Container -->
+        <div class="pb-5 flex flex-row space-x-5 shadow-md text-green-dark justify-center w-full">
+          <!-- User Photo Table -->
+          <div class="w-1/2 flex justify-center">
+            <table class="w-full text-center">
+              <thead>
+                <tr>
+                  <th class="px-4 py-2 text-2xl font-Inter font-bold bg-white text-green-dark">USER IMAGE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-4 py-2">
+                    <img class="max-w-80 max-h-80 mx-auto" src="<?php echo $profile_image; ?>" alt="Profile Image">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Document Photo Table -->
+          <div class="w-1/2 flex justify-center">
+            <table class="w-full text-center">
+              <thead>
+                <tr>
+                  <th class="px-4 py-2 text-2xl font-Inter font-bold bg-white text-green-dark">DOCUMENT IMAGE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-4 py-2">
+                    <img class="max-w-80 max-h-80 mx-auto" src="<?php echo $id_image; ?>" alt="Document Image">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex justify-between w-full mb-10 mt-6">
+          <a href="applications.php" class="text-white bg-green-dark hover:bg-green-700 font-bold py-2 px-4 rounded">Back</a>
+          <div class="space-x-4">
+            <form method="post" action="update_status.php" class="inline" onsubmit="return confirm('Are you sure you want to approve this request?')">
+              <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+              <input type="hidden" name="status" value="2">
+              <button type="submit" class="bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded">
+                APPROVE
+              </button>
+            </form>
+            <form method="post" action="update_status.php" class="inline" onsubmit="return confirm('Are you sure you want to decline this request?')">
+              <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+              <input type="hidden" name="status" value="0">
+              <button type="submit" class="bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-4 rounded">
+                DECLINE
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Document Photo Table -->
-    <div class="w-1/2 flex justify-center">
-      <table class="w-full text-center">
-        <thead>
-          <tr>
-            <th class="px-4 py-2 text-2xl font-Inter font-bold bg-white text-green-dark">DOCUMENT IMAGE</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="px-4 py-2">
-              <img class="max-w-80 max-h-80 mx-auto" src="<?php echo $id_image; ?>" alt="Document Image">
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Buttons -->
-  <div class="flex justify-between w-full mb-10">
-    <a href="applications.php" class="text-white bg-green-dark hover:bg-green-700 font-bold py-2 px-4 rounded">Back</a>
-    <div class="space-x-4">
-      <form method="post" action="update_status.php" class="flex-1 mr-4" onsubmit="return confirm('Are you sure you want to approve this request?')">
-        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-        <input type="hidden" name="status" value="2">
-        <button type="submit" class="bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded">
-          <p>APPROVE</p>
-        </button>
-      </form>
-      <form method="post" action="update_status.php" class="flex-1" onsubmit="return confirm('Are you sure you want to decline this request?')">
-        <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
-        <input type="hidden" name="status" value="0">
-        <button type="submit" class="bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-4 rounded">
-          <p>DECLINE</p>
-        </button>
-      </form>
-    </div>
-  </div>
-</div>
-
   </body>
-
 </html>
