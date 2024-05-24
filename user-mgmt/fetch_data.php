@@ -11,7 +11,12 @@ $user = 'root';
 $pass = '';
 
 // Establish database connection
-$pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+$conn = new mysqli($host, $user, $pass, $db);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 // Define the number of rows per page
 $rows_per_page = 5;
@@ -23,26 +28,19 @@ $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($current_page - 1) * $rows_per_page;
 
 // Prepare and execute query to fetch limited rows for the current page
-$stmt = $pdo->prepare("SELECT * FROM users WHERE is_deleted = 0 LIMIT :limit OFFSET :offset");
-$stmt->bindParam(':limit', $rows_per_page, PDO::PARAM_INT);
-$stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+$stmt = $conn->prepare("SELECT * FROM users WHERE is_deleted = 0 LIMIT ? OFFSET ?");
+$stmt->bind_param('ii', $rows_per_page, $offset);
 $stmt->execute();
+$result = $stmt->get_result();
 
 // Fetch data
-$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($data as $row) {
+while ($row = $result->fetch_assoc()) {
     echo "<tr class='text-center'>";
-    echo "<td class='px-12 py-1'><img src='" . htmlspecialchars($row['profile_image']) . "' class='w-20 h-20'></td>";
-    echo "<td class='px-12 py-1'>" . htmlspecialchars($row['fullname']) . "</td>";
-    echo "<td class='px-12 py-1'>" . htmlspecialchars($row['email']) . "</td>";
-    echo "<td class='px-12 py-1'>" . htmlspecialchars($row['user_type']) . "</td>";
-    echo "<td class='px-12 py-1'>
-            <button class='bg-green-dark hover:bg-xanadu-800 text-white font-bold py-2 px-2 rounded mr-2' onclick='editRecord(\"" . htmlspecialchars($row['id']) . "\", \"" . htmlspecialchars($row['profile_image']) . "\", \"" . htmlspecialchars($row['fullname']) . "\", \"" . htmlspecialchars($row['email']) . "\", \"" . htmlspecialchars($row['user_type']) . "\")'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'>
-                    <path fill='white' d='M5 19h1.098L16.796 8.302l-1.098-1.098L5 17.902zm-1 1v-2.52L17.18 4.288q.155-.137.34-.212T17.907 4t.39.064q.19.063.35.228l1.067 1.074q.165.159.226.35q.06.19.06.38q0 .204-.068.39q-.069.185-.218.339L6.519 20zM19.02 6.092l-1.112-1.111zm-2.782 1.67l-.54-.558l1.098 1.098z' />
-                </svg>
-            </button>
+    echo "<td class='px-12 py-3'><img src='" . htmlspecialchars($row['profile_image']) . "' class='w-20 h-20'></td>";
+    echo "<td class='px-12 py-3'>" . htmlspecialchars($row['fullname']) . "</td>";
+    echo "<td class='px-12 py-3'>" . htmlspecialchars($row['email']) . "</td>";
+    echo "<td class='px-12 py-3'>" . htmlspecialchars($row['user_type']) . "</td>";
+    echo "<td class='px-12 py-3'>
             <form method='post' action='delete.php' style='display:inline-block;' onsubmit='return confirm(\"Are you sure you want to delete this row?\");'>
                 <input type='hidden' name='id' value='" . htmlspecialchars($row['id']) . "'>
                 <button type='submit' class='bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-2 rounded'>
@@ -54,4 +52,8 @@ foreach ($data as $row) {
         </td>";
     echo "</tr>";
 }
+
+// Close statement and connection
+$stmt->close();
+$conn->close();
 

@@ -11,7 +11,12 @@ $user = 'root';
 $pass = '';
 
 // Establish database connection
-$pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
+$conn = new mysqli($host, $user, $pass, $db);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 // Define the number of rows per page
 $rows_per_page = 5;
@@ -23,7 +28,9 @@ $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($current_page - 1) * $rows_per_page;
 
 // Get the total number of rows
-$total_rows = $pdo->query("SELECT COUNT(*) FROM users WHERE is_deleted = 0")->fetchColumn();
+$total_rows_query = "SELECT COUNT(*) AS total FROM users WHERE is_deleted = 0";
+$total_rows_result = $conn->query($total_rows_query);
+$total_rows = $total_rows_result->fetch_assoc()['total'];
 $total_pages = ceil($total_rows / $rows_per_page);
 
 // Display pagination controls
@@ -43,3 +50,6 @@ if ($current_page < $total_pages) {
 }
 echo '</div>';
 
+// Close connection
+$conn->close();
+?>

@@ -37,7 +37,7 @@
 
     <div class="flex flex-row flex-auto">
       
-      <div class="flex flex-row h-screen w-64 bg-xanadu-400 text-white">
+      <div class="flex flex-row w-64 bg-xanadu-400 text-white">
         <div class="flex flex-col flex-auto">
           
           <div class="pl-5 py-4 mt-10 text-sm flex items-center bg-green-dark border-t-2 border-b-2">
@@ -71,82 +71,72 @@
         </div>
       </div>
 
-      <div class="flex flex-col overflow-hidden">
-        <div class="bg-eggshell justify-center">
-          <div class="mt-5 ml-5 flex">
-            <input type="text" id="search-bar" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Search...">
-            </div>
-          
-          <div class="mt-5 ml-5 flex">
-            <button class="px-4 py-2 bg-green-dark text-white rounded-md" onclick="toggleForm()">Add Record</button>
-          </div>
-
-          <form id="addRecordForm" action="add_record.php" method="POST" class="mt-5 ml-5 space-y-4" style="display:none;">
-              <input type="text" name="picture" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Image Link" required>
-              <input type="text" name="name" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Name" required>
-              <input type="email" name="email" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Email" required>
-              <input type="text" name="role" class="px-4 py-2 w-44 rounded-md border border-gray-300" placeholder="Role" required>
-              <button type="submit" class="px-4 py-2 bg-green-dark text-white rounded-md">Submit</button>
-          </form>
-
-          <form id="editRecordForm" action="edit_record.php" method="POST" class="mt-5 ml-5 space-y-4" style="display:none;">
-            <input type="hidden" name="id" id="edit-id">
-            <input type="text" name="picture" id="edit-picture" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Image Link" required>
-            <input type="text" name="name" id="edit-name" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Name" required>
-            <input type="email" name="email" id="edit-email" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Email" required>
-            <input type="text" name="role" id="edit-role" class="px-4 py-2 w-44 rounded-md border border-gray-300" placeholder="Role" required>
-            <button type="submit" class="px-4 py-2 bg-green-dark text-white rounded-md">Submit</button>
-          </form>
-
-          <div class="flex flex-row mt-5 justify-center items-center mx-auto shadow-md text-green-dark">
-            <table>
-              <thead>
-                <tr>
-                  <th class="px-20 py-3 bg-green-dark text-white">Picture</th>
-                  <th class="px-20 py-3 bg-green-dark text-white">Name</th>
-                  <th class="px-20 py-3 bg-green-dark text-white">Email</th>
-                  <th class="px-20 py-3 bg-green-dark text-white">Role</th>
-                  <th class="px-20 py-3 bg-green-dark text-white">Actions</th>
-                </tr>
-              </thead>
-                <tbody id="table-body">
-                  <?php
-                    include ("fetch_data.php");
-                  ?>
-                </tbody>
-            </table>
-          </div>
-
-          <div class="flex mt-5 mb-5 justify-end">
-                <div class="pagination" id="pagination-controls">
-                <?php
-                    include ("pagination_controls.php");
-                  ?>
-                </div>
-            </div>
+      <div class="bg-eggshell">
+      <div class="flex flex-col p-3 w-full"> 
+  
+        <div class="p-3 flex">
+          <input type="text" id="search-bar" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Search..." oninput="filterTable()">
         </div>
+
+   
+        <div class="m-3 flex bg-white text-green-dark">
+          <table class="rounded-md">
+            <thead>
+              <tr>
+                <th class="px-12 py-3 bg-green-dark text-white">Picture</th>
+                <th class="px-12 py-3 bg-green-dark text-white">Name</th>
+                <th class="px-12 py-3 bg-green-dark text-white">Email</th>
+                <th class="px-12 py-3 bg-green-dark text-white">Role</th>
+                <th class="px-12 py-3 bg-green-dark text-white">Deactivate</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <?php
+                include ("fetch_data.php");
+              ?>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex mb-5 justify-end">
+          <div class="pagination" id="pagination-controls">
+            <?php
+              include ("pagination_controls.php");
+            ?>
+          </div>
+        </div>
+
       </div>
-    </div>  
+      </div>
+    </div>
+
   </body>
 </html>
 
 <script>
-        function toggleForm() {
-    var form = document.getElementById('addRecordForm');
-    if (form.style.display === 'none' || form.style.display === '') {
-        form.style.display = 'block';
-    } else {
-        form.style.display = 'none';
-    }
-}
+      function filterTable() {
+        // Declare variables
+        var input, filter, table, tr, tdName, tdRole, i, txtValueName, txtValueRole;
+        input = document.getElementById("search-bar");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table-body");
+        tr = table.getElementsByTagName("tr");
 
-function editRecord(id, picture, name, email, role) {
-    document.getElementById('edit-id').value = id;
-    document.getElementById('edit-picture').value = picture;
-    document.getElementById('edit-name').value = name;
-    document.getElementById('edit-email').value = email;
-    document.getElementById('edit-role').value = role;
-    document.getElementById('editRecordForm').style.display = 'block';
-}
+        // Loop through all table rows, and hide those that don't match the search query
+        for (i = 0; i < tr.length; i++) {
+          tdName = tr[i].getElementsByTagName("td")[1]; // Index 1 represents the column with the name
+          tdRole = tr[i].getElementsByTagName("td")[3]; // Index 3 represents the column with the role
+          if (tdName && tdRole) {
+            txtValueName = tdName.textContent || tdName.innerText;
+            txtValueRole = tdRole.textContent || tdRole.innerText;
+            if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueRole.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
 
-</script>
+
