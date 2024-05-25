@@ -19,15 +19,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Basic validation
     if (empty($username) || empty($old_password) || empty($new_password) || empty($confirm_password)) {
-        die("All fields are required.");
+        echo "<script>alert('All fields are required.'); window.history.back();</script>";
+        exit();
     }
 
     if ($new_password !== $confirm_password) {
-        die("New password and confirm password do not match.");
+        echo "<script>alert('New password and confirm password do not match.'); window.history.back();</script>";
+        exit();
     }
 
-    // Fetch the user's current password from the database
-    $sql = "SELECT password FROM users WHERE username = ?";
+    // Fetch the user's current password hash from the database
+    $sql = "SELECT password FROM superadmin WHERE username = ?";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         die("Prepare failed: " . $conn->error);
@@ -38,32 +40,78 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Execute failed: " . $stmt->error);
     }
 
-    $stmt->bind_result($stored_password);
+    $stmt->bind_result($stored_password_hash);
     if (!$stmt->fetch()) {
-        die("No user found with the provided username.");
+        echo "<script>alert('No user found with the provided username.'); window.history.back();</script>";
+        exit();
     }
     $stmt->close();
 
     // Verify the old password
-    if ($old_password !== $stored_password) {
-        die("Old password is incorrect.");
+    if (!password_verify($old_password, $stored_password_hash)) {
+        echo "<script>alert('Old Password is incorrect.'); window.history.back();</script>";
+        exit();
     }
 
+    // Hash the new password
+    $new_password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
     // Update the password in the database
-    $sql = "UPDATE users SET password = ? WHERE username = ?";
+    $sql = "UPDATE superadmin SET password = ? WHERE username = ?";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         die("Prepare failed: " . $conn->error);
     }
 
-    $stmt->bind_param("ss", $new_password, $username);
+    $stmt->bind_param("ss", $new_password_hash, $username);
     if ($stmt->execute()) {
-        echo "Password successfully changed.";
+        echo "<script>alert('Password successfully changed.'); window.location.href = 'security.php';</script>";
     } else {
-        echo "Error: " . $stmt->error;
+        echo "<script>alert('Error: " . $stmt->error . "'); window.history.back();</script>";
     }
     $stmt->close();
 }
 
 $conn->close();
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Change Password</title>
+    <script>
+        function confirmDetails() {
+            const username = document.getElementById('username').value;
+            const oldPassword = document.getElementById('old_password').value;
+            const newPassword = document.getElementById('new_password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+
+            if (username === "" || oldPassword === "" || newPassword === "" || confirmPassword === "") {
+                alert("All fields are required.");
+                return false;
+            }
+
+            if (newPassword !== confirmPassword) {
+                alert("New password and confirm password do not match.");
+                return false;
+            }
+
+            return confirm("Are you sure the entered details are correct?");
+        }
+    </script>
+</head>
+<body>
+    <form method="POST" onsubmit="return confirmDetails();">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="old_password">Old Password:</label>
+        <input type="password" id="old_password" name="old_password" required><br>
+        <label for="new_password">New Password:</label>
+        <input type="password" id="new_password" name="new_password" required><br>
+        <label for="confirm_password">Confirm New Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required><br>
+        <button type="submit">Change Password</button>
+    </form>
+</body>
+</html>

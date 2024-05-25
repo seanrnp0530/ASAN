@@ -73,7 +73,7 @@
 
 
       <div class="flex flex-col flex-1 bg-eggshell p-8">
-        <h2 class="text-start text-2xl font-bold mb-6 font-Inter text-green-dark">Change Password</h2>
+        <h2 class="text-start text-2xl font-bold mb-6 font-Inter text-green-dark">Change Superadmin Password</h2>
         <div class="bg-white pb-28 pt-20 mx-24 rounded-lg shadow-md w-sm flex flex-col relative">
           <form id="password-form" action="edit_password.php" method="post" class="space-y-6 w-full flex flex-col pr-12">
             <div class="grid grid-cols-2 gap-3">
