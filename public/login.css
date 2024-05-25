@@ -25,7 +25,7 @@ body {
 .form-group label {
   position: absolute;
   left: 0rem;
-  padding: .6rem .5rem .6rem 1rem;
+  padding: .6rem 9rem .6rem 1rem;
   color: rgb(11, 65, 39);
   transition: top 0.2s, left .2s, font-size 0.1s;
 }
@@ -43,6 +43,7 @@ body {
   justify-content: center;
   font-size:larger;
   padding: 0.9rem;
+  padding-bottom: .1rem;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 0.25rem;
