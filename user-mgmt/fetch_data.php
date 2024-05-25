@@ -36,11 +36,11 @@ $result = $stmt->get_result();
 // Fetch data
 while ($row = $result->fetch_assoc()) {
     echo "<tr class='text-center'>";
-    echo "<td class='px-12 py-3'><img src='" . htmlspecialchars($row['profile_image']) . "' class='w-20 h-20'></td>";
-    echo "<td class='px-12 py-3'>" . htmlspecialchars($row['fullname']) . "</td>";
-    echo "<td class='px-12 py-3'>" . htmlspecialchars($row['email']) . "</td>";
-    echo "<td class='px-12 py-3'>" . htmlspecialchars($row['user_type']) . "</td>";
-    echo "<td class='px-12 py-3'>
+    echo "<td class='px-12 py-2'><img src='" . htmlspecialchars($row['profile_image']) . "' class='w-20 h-20'></td>";
+    echo "<td class='px-12 py-2'>" . htmlspecialchars($row['fullname']) . "</td>";
+    echo "<td class='px-12 py-2'>" . htmlspecialchars($row['email']) . "</td>";
+    echo "<td class='px-12 py-2'>" . htmlspecialchars($row['user_type']) . "</td>";
+    echo "<td class='px-12 py-2'>
             <form method='post' action='delete.php' style='display:inline-block;' onsubmit='return confirm(\"Are you sure you want to delete this row?\");'>
                 <input type='hidden' name='id' value='" . htmlspecialchars($row['id']) . "'>
                 <button type='submit' class='bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-2 rounded'>

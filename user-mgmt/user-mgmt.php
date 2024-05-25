@@ -37,17 +37,17 @@
 
     <div class="flex flex-row flex-auto">
       
-      <div class="flex flex-row w-64 bg-xanadu-400 text-white">
+      <div class="flex flex-row w-64 bg-xanadu-400 text-white relative">
         <div class="flex flex-col flex-auto">
           
-          <div class="pl-5 py-4 mt-10 text-sm flex items-center bg-green-dark border-t-2 border-b-2">
+          <div class="pl-5 py-4 mt-10 text-sm flex items-center hover:bg-green-dark hover:border-y-2">
             <svg class="w-12 h-12 mr-2" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
               <path d="M18.045 3.007 12.31 3a1.965 1.965 0 0 0-1.4.585l-7.33 7.394a2 2 0 0 0 0 2.805l6.573 6.631a1.957 1.957 0 0 0 1.4.585 1.965 1.965 0 0 0 1.4-.585l7.409-7.477A2 2 0 0 0 21 11.479v-5.5a2.972 2.972 0 0 0-2.955-2.972Zm-2.452 6.438a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
             </svg>                      
             <a href="#" class="text-xl font-bold m-0"> Sales </a>
           </div>
 
-          <div class="pl-5 py-4 text-sm flex items-center hover:bg-green-dark hover:border-y-2 border-white">
+          <div class="pl-5 py-4 text-sm flex items-center bg-green-dark border-t-2 border-b-2 border-white">
             <svg class="w-12 h-12 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
               <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd"/>
             </svg>
@@ -72,7 +72,7 @@
       </div>
 
       <div class="bg-eggshell">
-      <div class="flex flex-col p-3 w-full"> 
+      <div class="flex flex-col p-3 w-full px-auto"> 
   
         <div class="p-3 flex">
           <input type="text" id="search-bar" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Search..." oninput="filterTable()">
@@ -80,14 +80,14 @@
 
    
         <div class="m-3 flex bg-white text-green-dark">
-          <table class="rounded-md">
+          <table>
             <thead>
               <tr>
-                <th class="px-12 py-3 bg-green-dark text-white">Picture</th>
-                <th class="px-12 py-3 bg-green-dark text-white">Name</th>
-                <th class="px-12 py-3 bg-green-dark text-white">Email</th>
-                <th class="px-12 py-3 bg-green-dark text-white">Role</th>
-                <th class="px-12 py-3 bg-green-dark text-white">Deactivate</th>
+                <th class="px-20 py-2 bg-green-dark text-white">Picture</th>
+                <th class="px-20 py-2 bg-green-dark text-white">Name</th>
+                <th class="px-20 py-2 bg-green-dark text-white">Email</th>
+                <th class="px-20 py-2 bg-green-dark text-white">Role</th>
+                <th class="px-20 py-2 bg-green-dark text-white">Deactivate</th>
               </tr>
             </thead>
             <tbody id="table-body">
