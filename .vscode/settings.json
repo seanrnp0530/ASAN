@@ -1,6 +1,5 @@
 {
+  "css.lint.unknownAtRules": "ignore",
   "liveServer.settings.port": 5501,
-  "cSpell.words": [
-    "ASANA"
-  ]
+  "cSpell.words": ["ASANA"]
 }
