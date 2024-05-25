@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASANA Wed Admin</title>
+    <title>ASAN Wed Admin</title>
     <link rel="stylesheet" href="review.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/3d62a26938.js" crossorigin="anonymous"></script>
@@ -15,10 +15,15 @@
     <div>
         <div class="navbar">
             <div class="navbar-logo">
-                <img class="" src="/asan_img/asana logo pic mark.svg" alt="Logo">
-                <p class="project-asana">Project ASANA</p>
+                <img class="" src="/asan_img/asan logo pic mark.svg" alt="Logo">
+                <p class="project-asan">Project ASAN</p>
                 <p class="administration">Administration</p>
             </div>
+            <button class="hamburger" onclick="toggleSidebar()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
             <div class="search-bar">
                 <form class="search" action="action_page.php">
                     <input class="text" type="text" placeholder="Search" name="search">
@@ -32,12 +37,12 @@
             </div>
         </div>
         <!--SIDEBAR NAV-->
-        <div class="sidebar">
+        <div id="sidebar-menu" class="sidebar">
             <ul>
                 <li><a class="sales" href=""><i class="fa-solid fa-cash-register"></i>Sales</a></li>
                 <li><a class="sales" href=""><i class="fa-solid fa-user"></i>Sales</a></li>
                 <li><a class="sales" href=""><i class="fa-solid fa-key"></i>Security</a></li>
-                <li><a class="users" href=""><i class="fa-solid fa-folder "></i>Application</a></li>
+                <li><a class="users" href=""><i class="fa-solid fa-folder"></i>Application</a></li>
             </ul>
         </div>
         <div>
@@ -92,6 +97,10 @@
             </div>
         </div>
 </body>
-<script src=></script>
-
+<script>
+    function toggleSidebar() {
+        var sidebar = document.getElementById('sidebar-menu');
+        sidebar.classList.toggle('show');
+    }
+</script>
 </html>
