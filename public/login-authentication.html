@@ -7,11 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="login.css">
- 
 </head>
 <body>
   <div class="form-container">
-    <form class="login-form" action="login-authentication.php" method="post">
+    <form id="loginForm" class="login-form" action="login-authentication.php" method="post">
       <img src="/assets/Vector 21.svg" alt="Project ASAN Logo" class="mx-auto mb-4 w-24 h-24">
       <h2 class="text-3xl font-bold text-white text-center mb-4">WELCOME!</h2>
       <h2 class="text-sm text-gray-600 text-center mb-6">Sign in with your ASAN credentials</h2>
@@ -26,5 +25,29 @@
       <button type="submit" class="btn-login w-full">LOG IN</button>
     </form>
   </div>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from submitting the default way
+
+      const formData = new FormData(this);
+      fetch('login-authentication.php', {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              alert(data.success);
+              window.location.href = '/user-mgmt/user-mgmt.php'; // Redirect to the desired page
+          } else if (data.error) {
+              alert(data.error);
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          alert('An unexpected error occurred. Try again.');
+      });
+    });
+  </script>
 </body>
 </html>
