@@ -9,7 +9,7 @@
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="output.css" />
+    <link rel="stylesheet" href="\output.css" />
 
     <?php
     // Retrieve parameters

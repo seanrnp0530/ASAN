@@ -4,6 +4,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  /*caret-color: transparent;*/
 }
 
 .form-container {
@@ -33,21 +34,23 @@ body {
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label {
   background-color: transparent;
-  top: -.1rem;
-  left: -0.7rem;
+  top: -.3rem;
+  left: -0.5rem;
   font-size: 0.65rem;
   padding-bottom: 0.5rem;
 }
 
 .form-group input {
   justify-content: center;
-  font-size:larger;
+  font-size:medium;
   padding: 0.9rem;
   padding-bottom: .1rem;
   width: 100%;
+  height: 3rem;
   border: 1px solid #ccc;
   border-radius: 0.25rem;
   transition: border-color 0.3s;
+
 }
 
 .form-group input:focus {
