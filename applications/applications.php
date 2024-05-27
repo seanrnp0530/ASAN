@@ -20,7 +20,7 @@
           </svg>
         
           <div class="ml-2 flex flex-col">
-            <div class="text-2xl font-bold text-white font-inter">Project ASANA<br></div>
+            <div class="text-2xl font-bold text-white font-inter">Project ASAN<br></div>
             <div class="text-md font-semibold text-white font-inter">Administration</div>
           </div>
         </div>
