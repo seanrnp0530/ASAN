@@ -66,7 +66,7 @@
 
       <div class="flex flex-col flex-1 bg-eggshell p-8"> 
        
-        <input type="text" id="search-bar" class="px-4 py-2 w-64 rounded-md border border-gray-300" placeholder="Search..." oninput="filterTable()">
+        <input type="text" id="search-bar" class="px-4 py-1 w-64 rounded-md border border-gray-300" placeholder="Search..." oninput="filterTable()">
         
         <div class="flex flex-row mt-5 justify-center items-center mx-auto shadow-md text-green-dark">
           <table>
@@ -74,9 +74,9 @@
               <tr>
                 <th class="px-20 py-2 bg-green-dark text-white">Picture</th>
                 <th class="px-20 py-2 bg-green-dark text-white">Name</th>
-                <th class="px-20 py-2 bg-green-dark text-white">Email</th>
                 <th class="px-20 py-2 bg-green-dark text-white">Role</th>
-                <th class="px-12 py-2 bg-green-dark text-white">Deactivate</th>
+                <th class="px-20 py-2 bg-green-dark text-white">Status</th>
+                <th class="px-12 py-2 bg-green-dark text-white">Actions</th>
               </tr>
             </thead>
             <tbody id="table-body">
@@ -104,28 +104,32 @@
 
 <script>
       function filterTable() {
-        // Declare variables
-        var input, filter, table, tr, tdName, tdRole, i, txtValueName, txtValueRole;
-        input = document.getElementById("search-bar");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("table-body");
-        tr = table.getElementsByTagName("tr");
+    var input, filter, table, tr, tdName, tdRole, tdStatus, i, txtValueName, txtValueRole, txtValueStatus;
+    input = document.getElementById("search-bar");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table-body");
+    tr = table.getElementsByTagName("tr");
 
-        // Loop through all table rows, and hide those that don't match the search query
-        for (i = 0; i < tr.length; i++) {
-          tdName = tr[i].getElementsByTagName("td")[1]; // Index 1 represents the column with the name
-          tdRole = tr[i].getElementsByTagName("td")[3]; // Index 3 represents the column with the role
-          if (tdName && tdRole) {
-            txtValueName = tdName.textContent || tdName.innerText;
-            txtValueRole = tdRole.textContent || tdRole.innerText;
-            if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueRole.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
-            }
-          }
+    for (i = 0; i < tr.length; i++) {
+      tdName = tr[i].getElementsByTagName("td")[1];
+      tdRole = tr[i].getElementsByTagName("td")[2];
+      tdStatus = tr[i].getElementsByTagName("td")[3];
+      if (tdName && tdRole && tdStatus) {
+        txtValueName = tdName.textContent || tdName.innerText;
+        txtValueRole = tdRole.textContent || tdRole.innerText;
+        txtValueStatus = tdStatus.textContent || tdStatus.innerText;
+        if (
+          txtValueName.toUpperCase().indexOf(filter) > -1 ||
+          txtValueRole.toUpperCase().indexOf(filter) > -1 ||
+          txtValueStatus.toUpperCase().indexOf(filter) > -1
+        ) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
         }
       }
-    </script>
+    }
+  }
+</script>
 
 

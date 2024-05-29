@@ -36,4 +36,4 @@ if (isset($_POST['id'])) {
 
 // Close the database connection
 $mysqli->close();
-?>
+
