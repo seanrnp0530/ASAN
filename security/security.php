@@ -78,17 +78,17 @@
               <div class="text-center">
                   <p class="flex items-center justify-end h-full text-green-dark font-Inter">Old Password</p>
               </div>
-              <input type="text" name="old_password" placeholder="Old Password" class="w-52 bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-green-500" required>
+              <input type="text" name="old_password" placeholder="Old Password" class="w-52 bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-green-500"  required>
 
               <div class="text-center">
                 <p class="flex items-center justify-end h-full text-green-dark font-Inter">New Password</p>
               </div>
-              <input type="password" name="new_password" placeholder="New Password" class="w-52 bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-green-500" required>
+              <input type="password" name="new_password" placeholder="New Password" class="w-52 bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-green-500" pattern=".{8,}" title="Password must be at least 8 characters long." required>
 
               <div class="text-center">
                 <p class="flex items-center justify-end h-full text-green-dark font-Inter">Confirm New Password</p>
               </div>
-              <input type="password" name="confirm_password" placeholder="Confirm New Password" class="w-52 bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-green-500" required>
+              <input type="password" name="confirm_password" placeholder="Confirm New Password" class="w-52 bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-green-500" pattern=".{8,}" title="Password must be at least 8 characters long." required>
             </div>
           </form>
           <button type="submit" form="password-form" class="absolute bottom-4 right-4 bg-green-dark text-white py-2 px-4 rounded-md hover:bg-xanadu-300 hover:text-green-dark font-Inter">Save Changes</button>
