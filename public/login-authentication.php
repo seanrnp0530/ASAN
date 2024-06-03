@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header('Content-Type: application/json'); // Set content type to JSON
 
@@ -33,6 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
         if (password_verify($input_password, $user['password'])) {
             // Password is correct, login successful
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $input_username;
             echo json_encode(array("success" => "Login successful, will redirect you to the superadmin panel now."));
         } else {
             // Password is incorrect
@@ -51,4 +55,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: login-authentication.html");
     exit;
 }
-?>
+
