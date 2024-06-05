@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include('C:\xampp\htdocs\ASAN\public\session.php'); 
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,6 +11,7 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
     <meta http-equiv="X-UA-compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASAN Web Administration</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <link
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
@@ -72,6 +74,7 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
       <div class="flex flex-col flex-1 bg-eggshell p-8"> 
        
         <input type="text" id="search-bar" class="px-4 py-1 w-64 rounded-md border border-gray-300" placeholder="Search..." oninput="filterTable()">
+        <button id="generate-pdf">Generate PDF</button>
         
         <div class="flex flex-row mt-5 justify-center items-center mx-auto shadow-md text-green-dark">
           <table>
@@ -108,7 +111,7 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
 </html>
 
 <script>
-      function filterTable() {
+    function filterTable() {
     var input, filter, table, tr, tdName, tdRole, tdStatus, i, txtValueName, txtValueRole, txtValueStatus;
     input = document.getElementById("search-bar");
     filter = input.value.toUpperCase();
@@ -135,6 +138,120 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
       }
     }
   }
+
+  document.getElementById('generate-pdf').addEventListener('click', function () {
+    Promise.all([
+        fetch('fetch_users.php').then(response => response.json()),
+        fetch('fetch_subscriptions.php').then(response => response.json())
+    ]).then(([usersResponse, subscriptionsResponse]) => {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        let y = 15;
+        const pageWidth = doc.internal.pageSize.width;
+
+        // Set font and style for the title
+        doc.setFontSize(28);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor("#314536"); // Text color
+        doc.text("ASAN USER STATISTICS REPORT", pageWidth / 2, y, null, null, 'center');
+        y += 10;
+        doc.setLineWidth(0.5);
+        doc.setDrawColor("#314536"); // Line color
+        doc.line(10, y, pageWidth - 10, y); // Divider line
+        y += 10;
+
+        // Add Users Table
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.setFillColor("#314536"); // Background color
+        doc.setTextColor("#ffffff"); // Font color
+        doc.rect(10, y - 8, pageWidth - 20, 12, "F"); // Background rectangle
+        doc.text("ASAN Users", pageWidth / 2, y, { align: "center" });
+        y += 10;
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "normal");
+
+        // Calculate X positions for columns
+        const fullNameX = 10;
+        const verificationStatusX = pageWidth - 100;
+
+        // Draw column headers
+        doc.setTextColor("#ffffff"); // Font color
+        doc.setFillColor("#758b7c"); // Background color
+        doc.rect(10, y - 8, pageWidth - 20, 12, "F"); // Background rectangle
+        doc.text("FULL NAME", fullNameX + 40, y, { align: "center" });
+        doc.text("VERIFICATION STATUS", verificationStatusX + 45, y, { align: "center" });
+        y += 10;
+
+        // Draw data rows
+        usersResponse.data.forEach(user => {
+            doc.setTextColor("#314536"); // Font color
+            doc.text(user.fullname, fullNameX + 40, y, { align: "center" });
+            doc.text(user.verification_status === "1" ? "VERIFIED" : "UNVERIFIED", verificationStatusX + 45, y, { align: "center" });
+            y += 10;
+        });
+        y += 5;
+        doc.text(`Total Users: ${usersResponse.total_rows}`, 10, y);
+        y += 5;
+
+        // Add divider line
+        doc.setLineWidth(0.5);
+        doc.setDrawColor("#314536"); // Line color
+        doc.line(10, y, pageWidth - 10, y); // Divider line
+        y += 10;
+
+        // Add Subscriptions Table
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.setFillColor("#ffffff"); // Background color
+        doc.setFillColor("#314536"); // Background color
+        doc.setTextColor("#ffffff"); // Font color
+        doc.rect(10, y - 8, pageWidth - 20, 12, "F"); // Background rectangle
+        doc.text("USER SUBSCRIPTION PLANS", pageWidth / 2, y, { align: "center" });
+        y += 10;
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "normal");
+
+        // Calculate X positions for subscription columns
+        const subscriptionFullNameX = 10;
+        const subscriptionStatusX = pageWidth - 100;
+
+        // Draw column headers for subscriptions
+        doc.setTextColor("#ffffff"); // Font color
+        doc.setFillColor("#758b7c"); // Background color
+        doc.rect(10, y - 8, pageWidth - 20, 12, "F"); // Background rectangle
+        doc.text("FULL NAME", subscriptionFullNameX + 40, y, { align: "center" });
+        doc.text("SUBSCRIPTION STATUS", subscriptionStatusX + 45, y, { align: "center" });
+        y += 10;
+
+        // Draw data rows for subscriptions
+        let totalSubscriptions = 0;
+        subscriptionsResponse.data.forEach(subscription => {
+            doc.setTextColor("#314536"); // Font color
+            doc.text(subscription.fullname, subscriptionFullNameX + 40, y, { align: "center" });
+            doc.text(subscription.subscription_status === "1" ? "TRADING PLAN" : "BASIC PLAN", subscriptionStatusX + 45, y, { align: "center" });
+            if (subscription.subscription_status === "1") {
+                totalSubscriptions++;
+            }
+            y += 10;
+        });
+        y += 10;
+        doc.text(`Total Subscriptions: ${totalSubscriptions}`, 10, y);
+
+        // Add a footer
+        const pageHeight = doc.internal.pageSize.height;
+        doc.setFontSize(10);
+        doc.setTextColor("#314536"); // Font color
+        doc.text('Generated on ' + new Date().toLocaleDateString(), 10, pageHeight - 10);
+
+        // Save the PDF
+        doc.save("report.pdf");
+    }).catch(error => {
+        console.error('Error fetching data:', error);
+    });
+});
+
 </script>
 
 
