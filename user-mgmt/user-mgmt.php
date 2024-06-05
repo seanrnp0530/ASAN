@@ -72,38 +72,35 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
       </div>
 
       <div class="flex flex-col flex-1 bg-eggshell p-8"> 
-       
+    <div class="flex flex-row items-center mb-5">
         <input type="text" id="search-bar" class="px-4 py-1 w-64 rounded-md border border-gray-300" placeholder="Search..." oninput="filterTable()">
-        <button id="generate-pdf">Generate PDF</button>
+        <button id="generate-pdf" class="ml-4 px-4 py-1 bg-green-dark text-white rounded-md">Generate User Report</button>
+    </div>
         
-        <div class="flex flex-row mt-5 justify-center items-center mx-auto shadow-md text-green-dark">
-          <table>
+    <div class="flex flex-row mt-5 justify-center items-center mx-auto shadow-md text-green-dark">
+        <table>
             <thead>
-              <tr>
-                <th class="px-20 py-2 bg-green-dark text-white">Picture</th>
-                <th class="px-20 py-2 bg-green-dark text-white">Name</th>
-                <th class="px-20 py-2 bg-green-dark text-white">Role</th>
-                <th class="px-20 py-2 bg-green-dark text-white">Status</th>
-                <th class="px-12 py-2 bg-green-dark text-white">Actions</th>
-              </tr>
+                <tr>
+                    <th class="px-20 py-2 bg-green-dark text-white">Picture</th>
+                    <th class="px-20 py-2 bg-green-dark text-white">Name</th>
+                    <th class="px-20 py-2 bg-green-dark text-white">Role</th>
+                    <th class="px-20 py-2 bg-green-dark text-white">Status</th>
+                    <th class="px-12 py-2 bg-green-dark text-white">Actions</th>
+                </tr>
             </thead>
             <tbody id="table-body">
-              <?php
-                include ("fetch_data.php");
-              ?>
+                <?php include("fetch_data.php"); ?>
             </tbody>
-          </table>
-        </div>
+        </table>
+    </div>
 
-        <div class="flex mb-5 justify-end">
-          <div class="pagination" id="pagination-controls">
-            <?php
-              include ("pagination_controls.php");
-            ?>
-          </div>
+    <div class="flex mb-5 justify-end">
+        <div class="pagination" id="pagination-controls">
+            <?php include("pagination_controls.php"); ?>
         </div>
+    </div>
+</div>
 
-      </div>
       </div>
     </div>
 
