@@ -66,6 +66,16 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
             <a href="/applications/applications.php" class="text-xl font-bold"> Applications </a>
           </div>
 
+          <div class="pl-5 py-4 text-sm flex items-center hover:bg-green-dark hover:border-y-2 border-white">
+            <svg class="w-12 h-12 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+              <g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+		            <path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4M2 6h4m-4 4h4m-4 4h4m-4 4h4" />
+		            <path d="M18.4 2.6a2.17 2.17 0 0 1 3 3L16 11l-4 1l1-4Z" />
+	            </g>
+            </svg>
+            <a href="/audit_logs/audit_logs.php" class="text-xl font-bold"> Audit Log </a>
+          </div>
+
         </div>
       </div>
 

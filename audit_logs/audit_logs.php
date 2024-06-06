@@ -47,7 +47,7 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
       <div class="flex flex-row h-screen w-64 bg-xanadu-400 text-white">
         <div class="flex flex-col flex-auto">
 
-          <div class="pl-5 py-4 mt-10 text-sm flex items-center bg-green-dark border-t-2 border-b-2 border-white">
+          <div class="pl-5 py-4 mt-10 text-sm flex items-center hover:bg-green-dark hover:border-y-2 border-white">
             <svg class="w-12 h-12 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
               <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd"/>
             </svg>
@@ -68,7 +68,7 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
             <a href="/applications/applications.php" class="text-xl font-bold"> Applications </a>
           </div>
 
-          <div class="pl-5 py-4 text-sm flex items-center hover:bg-green-dark hover:border-y-2 border-white">
+          <div class="pl-5 py-4 text-sm flex items-center bg-green-dark border-t-2 border-b-2 border-white">
             <svg class="w-12 h-12 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
               <g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
 		            <path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4M2 6h4m-4 4h4m-4 4h4m-4 4h4" />
@@ -84,22 +84,21 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
       <div class="flex flex-col flex-1 bg-eggshell p-8"> 
     <div class="flex flex-row items-center mb-5">
         <input type="text" id="search-bar" class="px-4 py-1 w-64 rounded-md border border-gray-300" placeholder="Search..." oninput="filterTable()">
-        <button id="generate-pdf" class="ml-4 px-4 py-1 bg-green-dark text-white rounded-md">Generate User Report</button>
     </div>
         
     <div class="flex flex-row mt-5 justify-center items-center mx-auto shadow-md text-green-dark">
         <table>
             <thead>
                 <tr>
-                    <th class="px-20 py-2 bg-green-dark text-white">Picture</th>
-                    <th class="px-20 py-2 bg-green-dark text-white">Name</th>
-                    <th class="px-20 py-2 bg-green-dark text-white">Role</th>
-                    <th class="px-20 py-2 bg-green-dark text-white">Status</th>
-                    <th class="px-12 py-2 bg-green-dark text-white">Actions</th>
+                    <th class="px-12 py-2 bg-green-dark text-white">ADMIN</th>
+                    <th class="px-20 py-2 bg-green-dark text-white">ACTION TAKEN</th>
+                    <th class="px-20 py-2 bg-green-dark text-white">TARGET USER</th>
+                    <th class="px-20 py-2 bg-green-dark text-white">DESCRIPTION</th>
+                    <th class="px-12 py-2 bg-green-dark text-white">TIMESTAMP</th>
                 </tr>
             </thead>
             <tbody id="table-body">
-                <?php include("fetch_data.php"); ?>
+                <?php include("fetch_audit_logs.php"); ?>
             </tbody>
         </table>
     </div>
