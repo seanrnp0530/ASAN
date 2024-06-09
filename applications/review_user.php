@@ -128,13 +128,13 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
             <table class="w-full text-center">
               <thead>
                 <tr>
-                  <th class="px-4 py-2 text-2xl font-Inter font-bold bg-white text-green-dark">USER IMAGE</th>
+                  <th class="px-4 py-2 text-2xl font-Inter font-bold bg-white text-green-dark">VERIFICATION IMAGE</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td class="px-4 py-2">
-                    <img class="max-w-80 max-h-80 mx-auto" src="<?php echo $profile_image; ?>" alt="Profile Image">
+                    <img class="max-w-80 max-h-80 mx-auto" src="<?php echo $verification_image; ?>" alt="Profile Image">
                   </td>
                 </tr>
               </tbody>
