@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 
 // Database credentials
 $host = 'localhost';
-$db = 'asan_wms';
+$db = 'asan_api';
 $user = 'root';
 $pass = '';
 
@@ -39,23 +39,23 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
 
 foreach ($data as $row) {
     echo "<tr class='text-center'>";
-    echo "<td class='px-12 py-1 flex justify-center items-center'><img src='" . htmlspecialchars($row['profile_image']) . "' class='w-20 h-20'></td>";
-    echo "<td class='px-12 py-1'>" . htmlspecialchars($row['fullname']) . "</td>";
-    echo "<td class='px-12 py-1'>" . htmlspecialchars($row['id_submitted_date']) . "</td>";
+    echo "<td class='px-12 py-1 flex justify-center items-center'><img src='" . htmlspecialchars($row['profile_image'] ?? '') . "' class='w-20 h-20'></td>";
+    echo "<td class='px-12 py-1'>" . htmlspecialchars($row['fullname'] ?? '') . "</td>";
+    echo "<td class='px-12 py-1'>" . htmlspecialchars($row['id_submitted_date'] ?? '') . "</td>";
     echo "<td class='px-12 py-1'>
-            <button class='bg-yellow-500 hover:bg-yellow-900 text-white font-bold py-2 px-2 rounded mr-2 flex-1' onclick='redirectToReviewPage(\"" . htmlspecialchars($row['id']) . "\", \"" . htmlspecialchars($row['fullname']) . "\", \"" . htmlspecialchars($row['email']) . "\", \"" . htmlspecialchars($row['profile_image']) . "\", \"" . htmlspecialchars($row['date_of_birth']) . "\", \"" . htmlspecialchars($row['id_type']) . "\", \"" . htmlspecialchars($row['id_image']) . "\", \"" . htmlspecialchars($row['id_address']) . "\")'>
+            <button class='bg-yellow-500 hover:bg-yellow-900 text-white font-bold py-2 px-2 rounded mr-2 flex-1' onclick='redirectToReviewPage(\"" . htmlspecialchars($row['id'] ?? '') . "\", \"" . htmlspecialchars($row['fullname'] ?? '') . "\", \"" . htmlspecialchars($row['email'] ?? '') . "\", \"" . htmlspecialchars($row['profile_image'] ?? '') . "\", \"" . htmlspecialchars($row['date_of_birth'] ?? '') . "\", \"" . htmlspecialchars($row['id_type'] ?? '') . "\", \"" . htmlspecialchars($row['id_image'] ?? '') . "\", \"" . htmlspecialchars($row['id_address'] ?? '') . "\")'>
                 <p>REVIEW</p>
             </button>
 
-            <form method='post' action='update_status.php' class= 'flex-1' style='display:inline-block;'>
-                <input type='hidden' name='id' value='" . htmlspecialchars($row['id']) . "'>
+            <form method='post' action='update_status.php' class='flex-1' style='display:inline-block;'>
+                <input type='hidden' name='id' value='" . htmlspecialchars($row['id'] ?? '') . "'>
                 <input type='hidden' name='status' value='2'>
                 <button type='submit' class='bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-2 rounded mr-2'>
                 <p>APPROVE</p>
                 </button>
             </form>
-            <form method='post' action='update_status.php' class= 'flex-1' style='display:inline-block;'>
-                <input type='hidden' name='id' value='" . htmlspecialchars($row['id']) . "'>
+            <form method='post' action='update_status.php' class='flex-1' style='display:inline-block;'>
+                <input type='hidden' name='id' value='" . htmlspecialchars($row['id'] ?? '') . "'>
                 <input type='hidden' name='status' value='0'>
                 <button type='submit' class='bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-2 rounded'>
                 <p>DECLINE</p>
@@ -70,14 +70,11 @@ $mysqli->close();
 ?>
 
 <script>
-function redirectToBlankPage(id) {
-    window.location.href = 'blank_page.php?id=' + id;
-}
+    function redirectToBlankPage(id) {
+        window.location.href = 'blank_page.php?id=' + id;
+    }
 
-
-function redirectToReviewPage(id, fullname, email, profile_image, date_of_birth, id_type, id_image, id_address) {
-    window.location.href = 'review_user.php?id=' + id + '&fullname=' + fullname + '&email=' + email + '&profile_image=' + profile_image + '&date_of_birth=' + date_of_birth + '&id_type=' + id_type + '&id_image=' + id_image + '&id_address=' + id_address;
-}
-
-
+    function redirectToReviewPage(id, fullname, email, profile_image, date_of_birth, id_type, id_image, id_address) {
+        window.location.href = 'review_user.php?id=' + id + '&fullname=' + fullname + '&email=' + email + '&profile_image=' + profile_image + '&date_of_birth=' + date_of_birth + '&id_type=' + id_type + '&id_image=' + id_image + '&id_address=' + id_address;
+    }
 </script>

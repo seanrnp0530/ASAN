@@ -1,7 +1,7 @@
 <?php
 // Database connection
 $host = 'localhost';
-$db = 'asan_wms';
+$db = '';
 $user = 'root';
 $pass = '';
 

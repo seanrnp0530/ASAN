@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 $host = 'localhost';
-$db = 'asan_wms';
+$db = 'asan_api';
 $user = 'root';
 $pass = '';
 

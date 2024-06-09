@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Database connection parameters
     $host = 'localhost';
-    $db = 'asan_wms';
+    $db = 'asan_api';
     $user = 'root';
     $pass = '';
 

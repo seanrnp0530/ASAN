@@ -3,3 +3,23 @@ Stack trace:
 #0 C:\xampp\htdocs\ASAN\public\login-authentication.php(21): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'asan_api')
 #1 {main}
   thrown in C:\xampp\htdocs\ASAN\public\login-authentication.php on line 21
+[09-Jun-2024 17:51:03 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown database '' in C:\xampp\htdocs\ASAN\public\login-authentication.php:21
+Stack trace:
+#0 C:\xampp\htdocs\ASAN\public\login-authentication.php(21): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), '')
+#1 {main}
+  thrown in C:\xampp\htdocs\ASAN\public\login-authentication.php on line 21
+[09-Jun-2024 17:53:08 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: No database selected in C:\xampp\htdocs\ASAN\public\login-authentication.php:35
+Stack trace:
+#0 C:\xampp\htdocs\ASAN\public\login-authentication.php(35): mysqli->prepare('SELECT * FROM s...')
+#1 {main}
+  thrown in C:\xampp\htdocs\ASAN\public\login-authentication.php on line 35
+[09-Jun-2024 17:53:36 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: No database selected in C:\xampp\htdocs\ASAN\public\login-authentication.php:35
+Stack trace:
+#0 C:\xampp\htdocs\ASAN\public\login-authentication.php(35): mysqli->prepare('SELECT * FROM s...')
+#1 {main}
+  thrown in C:\xampp\htdocs\ASAN\public\login-authentication.php on line 35
+[09-Jun-2024 17:53:38 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: No database selected in C:\xampp\htdocs\ASAN\public\login-authentication.php:35
+Stack trace:
+#0 C:\xampp\htdocs\ASAN\public\login-authentication.php(35): mysqli->prepare('SELECT * FROM s...')
+#1 {main}
+  thrown in C:\xampp\htdocs\ASAN\public\login-authentication.php on line 35

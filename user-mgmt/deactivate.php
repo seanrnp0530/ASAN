@@ -7,7 +7,7 @@ include 'C:\xampp\htdocs\ASAN\public\session.php';
 
 // Database connection details
 $host = 'localhost';
-$db = 'asan_wms';
+$db = 'asan_api';
 $user = 'root';
 $pass = '';
 

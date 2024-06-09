@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 
 // Example:
 $host = 'localhost';
-$db = 'asan_wms';
+$db = 'asan_api';
 $user = 'root';
 $pass = '';
 
@@ -27,10 +27,11 @@ $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr class='text-center'>";
-        echo "<td>" . $row['username'] . "</td>";
-        echo "<td>" . $row['action_type'] . "</td>";
+        echo "<td>" . $row['user_id'] . "</td>";
+        echo "<td>" . $row['action'] . "</td>";
         echo "<td>" . $row['description'] . "</td>";
         echo "<td>" . $row['created_at'] . "</td>";
+        // echo "<td>" . $row['updated_at'] . "</td>";
         echo "</tr>";
     }
 } else {
