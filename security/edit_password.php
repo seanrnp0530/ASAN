@@ -1,14 +1,15 @@
 <?php
 // Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "asan wms";
+$host = 'localhost';
+$db = 'asan_wms';
+$user = 'root';
+$pass = '';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Establish database connection
+$mysqli = new mysqli($host, $user, $pass, $db);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,9 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Fetch the user's current password hash from the database
     $sql = "SELECT password FROM superadmin WHERE username = ?";
-    $stmt = $conn->prepare($sql);
+    $stmt = $mysqli->prepare($sql);
     if (!$stmt) {
-        die("Prepare failed: " . $conn->error);
+        die("Prepare failed: " . $mysqli->error);
     }
 
     $stmt->bind_param("s", $username);
@@ -58,9 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Update the password in the database
     $sql = "UPDATE superadmin SET password = ? WHERE username = ?";
-    $stmt = $conn->prepare($sql);
+    $stmt = $mysqli->prepare($sql);
     if (!$stmt) {
-        die("Prepare failed: " . $conn->error);
+        die("Prepare failed: " . $mysqli->error);
     }
 
     $stmt->bind_param("ss", $new_password_hash, $username);
@@ -72,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 }
 
-$conn->close();
+$mysqli->close();
 ?>
 
 <!DOCTYPE html>

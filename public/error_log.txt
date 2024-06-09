@@ -1,0 +1,5 @@
+[07-Jun-2024 19:29:01 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\xampp\htdocs\ASAN\public\login-authentication.php:21
+Stack trace:
+#0 C:\xampp\htdocs\ASAN\public\login-authentication.php(21): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'asan_api')
+#1 {main}
+  thrown in C:\xampp\htdocs\ASAN\public\login-authentication.php on line 21

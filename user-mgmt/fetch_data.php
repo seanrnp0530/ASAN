@@ -8,16 +8,16 @@ ini_set('display_errors', 1);
 
 // Database credentials
 $host = 'localhost';
-$db = 'asan wms'; // Fixed database name syntax
+$db = 'asan_wms';
 $user = 'root';
 $pass = '';
 
 // Establish database connection
-$conn = new mysqli($host, $user, $pass, $db);
+$mysqli = new mysqli($host, $user, $pass, $db);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
 
 // Define the number of rows per page
@@ -30,7 +30,7 @@ $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($current_page - 1) * $rows_per_page;
 
 // Prepare and execute query to fetch limited rows for the current page
-$stmt = $conn->prepare("SELECT * FROM users LIMIT ? OFFSET ?");
+$stmt = $mysqli->prepare("SELECT * FROM users LIMIT ? OFFSET ?");
 $stmt->bind_param('ii', $rows_per_page, $offset);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -39,12 +39,15 @@ $result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
     // Determine user status
     $user_status = $row['is_deleted'] == 1 ? 'Deactivated' : 'Active';
+    $verification_status = $row['verification_status'] == 0 ? 'Denied' : 
+                          ($row['verification_status'] == 1 ? 'Pending' : 'Verified');
 
     echo "<tr class='text-center'>";
-    echo "<td class='px-12 py-2 flex justify-center items-center'><img src='" . htmlspecialchars($row['profile_image']) . "' class='w-20 h-20'></td>";
+    echo "<td class='px-8 py-2 flex justify-center items-center'><img src='" . htmlspecialchars($row['profile_image']) . "' class='w-20 h-20'></td>";
     echo "<td class='px-12 py-2'>" . htmlspecialchars($row['fullname']) . "</td>";
     echo "<td class='px-12 py-2'>" . htmlspecialchars($row['user_type']) . "</td>";
-    echo "<td class='px-12 py-2'>" . htmlspecialchars($user_status) . "</td>"; // Display user status instead of email
+    echo "<td class='px-8 py-2'>" . htmlspecialchars($user_status) . "</td>";
+    echo "<td class='px-8 py-2'>" . htmlspecialchars($verification_status) . "</td>";
     echo "<td class='px-12 py-2'>
             <form method='post' action='reactivate.php' style='display:inline-block;' onsubmit='return confirm(\"Are you sure you want to reactivate this user?\");'>
                 <input type='hidden' name='id' value='" . htmlspecialchars($row['id']) . "'>
@@ -68,7 +71,7 @@ while ($row = $result->fetch_assoc()) {
 
 // Close statement and connection
 $stmt->close();
-$conn->close();
+$mysqli->close();
 
 
 

@@ -6,16 +6,16 @@ ini_set('display_errors', 1);
 
 // Database credentials
 $host = 'localhost';
-$db = 'asan wms';
+$db = 'asan_wms';
 $user = 'root';
 $pass = '';
 
 // Establish database connection
-$conn = new mysqli($host, $user, $pass, $db);
+$mysqli = new mysqli($host, $user, $pass, $db);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
 
 // Define the number of rows per page
@@ -29,7 +29,7 @@ $offset = ($current_page - 1) * $rows_per_page;
 
 // Get the total number of rows
 $total_rows_query = "SELECT COUNT(*) AS total FROM users WHERE is_deleted = 0";
-$total_rows_result = $conn->query($total_rows_query);
+$total_rows_result = $mysqli->query($total_rows_query);
 $total_rows = $total_rows_result->fetch_assoc()['total'];
 $total_pages = ceil($total_rows / $rows_per_page);
 
@@ -51,5 +51,5 @@ if ($current_page < $total_pages) {
 echo '</div>';
 
 // Close connection
-$conn->close();
+$mysqli->close();
 ?>

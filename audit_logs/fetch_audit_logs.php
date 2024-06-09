@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 
 // Example:
 $host = 'localhost';
-$db = 'asan wms';
+$db = 'asan_wms';
 $user = 'root';
 $pass = '';
 
@@ -27,9 +27,8 @@ $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr class='text-center'>";
-        echo "<td >" . $row['username'] . "</td>";
+        echo "<td>" . $row['username'] . "</td>";
         echo "<td>" . $row['action_type'] . "</td>";
-        echo "<td>" . $row['target_user_id'] . "</td>";
         echo "<td>" . $row['description'] . "</td>";
         echo "<td>" . $row['created_at'] . "</td>";
         echo "</tr>";

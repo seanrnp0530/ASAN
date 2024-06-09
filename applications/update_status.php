@@ -6,22 +6,22 @@ ini_set('display_errors', 1);
 
 // Database credentials
 $host = 'localhost';
-$db = 'asan wms';
+$db = 'asan_wms';
 $user = 'root';
 $pass = '';
 
 // Establish database connection
-$conn = new mysqli($host, $user, $pass, $db);
+$mysqli = new mysqli($host, $user, $pass, $db);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
 
 // Function to log audit actions
-function log_audit_action($conn, $admin_username, $action_type, $target_user_id, $description) {
+function log_audit_action($mysqli, $admin_username, $action_type, $target_user_id, $description) {
     $query = "INSERT INTO audit_logs (username, action_type, target_user_id, description) VALUES (?, ?, ?, ?)";
-    $stmt = $conn->prepare($query);
+    $stmt = $mysqli->prepare($query);
     $stmt->bind_param("ssss", $admin_username, $action_type, $target_user_id, $description);
     $stmt->execute();
     $stmt->close();
@@ -33,7 +33,7 @@ $status = $_POST['status'];
 
 // Update the verification status
 $query = "UPDATE users SET verification_status = ? WHERE id = ?";
-$stmt = $conn->prepare($query);
+$stmt = $mysqli->prepare($query);
 $stmt->bind_param("ii", $status, $id);
 $stmt->execute();
 $stmt->close();
@@ -59,11 +59,11 @@ if ($status == 2) {
 }
 
 // Log the audit action
-log_audit_action($conn, $admin_username, $action_type, $id, $description);
+log_audit_action($mysqli, $admin_username, $action_type, $id, $description);
 
 // Redirect back to the previous page or another page
 header("Location: applications.php"); // Replace 'applications.php' with the actual page you want to redirect to
 
 // Close connection
-$conn->close();
+$mysqli->close();
 ?>

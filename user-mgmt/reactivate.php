@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 
 // Example:
 $host = 'localhost';
-$db = 'asan wms';
+$db = 'asan_wms';
 $user = 'root';
 $pass = '';
 

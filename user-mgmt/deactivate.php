@@ -7,7 +7,7 @@ include 'C:\xampp\htdocs\ASAN\public\session.php';
 
 // Database connection details
 $host = 'localhost';
-$db = 'asan wms'; // Ensure there is no space in the database name
+$db = 'asan_wms';
 $user = 'root';
 $pass = '';
 

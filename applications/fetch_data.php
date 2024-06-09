@@ -6,16 +6,16 @@ ini_set('display_errors', 1);
 
 // Database credentials
 $host = 'localhost';
-$db = 'asan wms';
+$db = 'asan_wms';
 $user = 'root';
 $pass = '';
 
 // Establish database connection
-$conn = new mysqli($host, $user, $pass, $db);
+$mysqli = new mysqli($host, $user, $pass, $db);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
 
 // Define the number of rows per page
@@ -29,7 +29,7 @@ $offset = ($current_page - 1) * $rows_per_page;
 
 // Prepare and execute query to fetch limited rows for the current page
 $query = "SELECT * FROM users WHERE verification_status = 1 LIMIT ? OFFSET ?";
-$stmt = $conn->prepare($query);
+$stmt = $mysqli->prepare($query);
 $stmt->bind_param("ii", $rows_per_page, $offset);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -66,7 +66,7 @@ foreach ($data as $row) {
 }
 
 // Close connection
-$conn->close();
+$mysqli->close();
 ?>
 
 <script>
