@@ -21,7 +21,7 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
     $id = $_GET['id'];
     $fullname = $_GET['fullname'];
     $email = $_GET['email'];
-    $profile_image = $_GET['profile_image'];
+    $verification_image = $_GET['verification_image'];
     $date_of_birth = $_GET['date_of_birth'];
     $id_type = $_GET['id_type'];
     $id_image = $_GET['id_image'];
@@ -134,7 +134,7 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
               <tbody>
                 <tr>
                   <td class="px-4 py-2">
-                    <img class="max-w-80 max-h-80 mx-auto" src="<?php echo $verification_image; ?>" alt="Profile Image">
+                    <img class="max-w-80 max-h-80 mx-auto" src="<?php echo $verification_image; ?>" alt="Verification Image">
                   </td>
                 </tr>
               </tbody>

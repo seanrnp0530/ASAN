@@ -23,3 +23,13 @@ Stack trace:
 #0 C:\xampp\htdocs\ASAN\public\login-authentication.php(35): mysqli->prepare('SELECT * FROM s...')
 #1 {main}
   thrown in C:\xampp\htdocs\ASAN\public\login-authentication.php on line 35
+[10-Jun-2024 02:51:44 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\ASAN\public\login-authentication.php:21
+Stack trace:
+#0 C:\xampp\htdocs\ASAN\public\login-authentication.php(21): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'asan_api')
+#1 {main}
+  thrown in C:\xampp\htdocs\ASAN\public\login-authentication.php on line 21
+[10-Jun-2024 02:51:46 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\ASAN\public\login-authentication.php:21
+Stack trace:
+#0 C:\xampp\htdocs\ASAN\public\login-authentication.php(21): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'asan_api')
+#1 {main}
+  thrown in C:\xampp\htdocs\ASAN\public\login-authentication.php on line 21

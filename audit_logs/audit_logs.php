@@ -93,7 +93,7 @@ include('C:\xampp\htdocs\ASAN\public\session.php');
                     <th class="px-12 py-2 bg-green-dark text-white">USERNAME/ID</th>
                     <th class="px-20 py-2 bg-green-dark text-white">ACTION TAKEN</th>
                     <th class="px-20 py-2 bg-green-dark text-white">DESCRIPTION</th>
-                    <th class="px-12 py-2 bg-green-dark text-white">TIMESTAMP</th>
+                    <!-- <th class="px-12 py-2 bg-green-dark text-white">TIMESTAMP</th> -->
                 </tr>
             </thead>
             <tbody id="table-body">

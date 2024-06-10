@@ -43,7 +43,7 @@ foreach ($data as $row) {
     echo "<td class='px-12 py-1'>" . htmlspecialchars($row['fullname'] ?? '') . "</td>";
     echo "<td class='px-12 py-1'>" . htmlspecialchars($row['id_submitted_date'] ?? '') . "</td>";
     echo "<td class='px-12 py-1'>
-            <button class='bg-yellow-500 hover:bg-yellow-900 text-white font-bold py-2 px-2 rounded mr-2 flex-1' onclick='redirectToReviewPage(\"" . htmlspecialchars($row['id'] ?? '') . "\", \"" . htmlspecialchars($row['fullname'] ?? '') . "\", \"" . htmlspecialchars($row['email'] ?? '') . "\", \"" . htmlspecialchars($row['profile_image'] ?? '') . "\", \"" . htmlspecialchars($row['date_of_birth'] ?? '') . "\", \"" . htmlspecialchars($row['id_type'] ?? '') . "\", \"" . htmlspecialchars($row['id_image'] ?? '') . "\", \"" . htmlspecialchars($row['id_address'] ?? '') . "\")'>
+            <button class='bg-yellow-500 hover:bg-yellow-900 text-white font-bold py-2 px-2 rounded mr-2 flex-1' onclick='redirectToReviewPage(\"" . htmlspecialchars($row['id'] ?? '') . "\", \"" . htmlspecialchars($row['fullname'] ?? '') . "\", \"" . htmlspecialchars($row['email'] ?? '') . "\", \"" . htmlspecialchars($row['verification_image'] ?? '') . "\", \"" . htmlspecialchars($row['date_of_birth'] ?? '') . "\", \"" . htmlspecialchars($row['id_type'] ?? '') . "\", \"" . htmlspecialchars($row['id_image'] ?? '') . "\", \"" . htmlspecialchars($row['id_address'] ?? '') . "\")'>
                 <p>REVIEW</p>
             </button>
 
@@ -74,7 +74,7 @@ $mysqli->close();
         window.location.href = 'blank_page.php?id=' + id;
     }
 
-    function redirectToReviewPage(id, fullname, email, profile_image, date_of_birth, id_type, id_image, id_address) {
-        window.location.href = 'review_user.php?id=' + id + '&fullname=' + fullname + '&email=' + email + '&profile_image=' + profile_image + '&date_of_birth=' + date_of_birth + '&id_type=' + id_type + '&id_image=' + id_image + '&id_address=' + id_address;
+    function redirectToReviewPage(id, fullname, email, verification_image, date_of_birth, id_type, id_image, id_address) {
+        window.location.href = 'review_user.php?id=' + id + '&fullname=' + fullname + '&email=' + email + '&verification_image=' + verification_image + '&date_of_birth=' + date_of_birth + '&id_type=' + id_type + '&id_image=' + id_image + '&id_address=' + id_address;
     }
 </script>

@@ -1,7 +1,7 @@
 <?php
 // Database connection
 $host = 'localhost';
-$db = '';
+$db = 'asan_api';
 $user = 'root';
 $pass = '';
 

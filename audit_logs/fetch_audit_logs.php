@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row['user_id'] . "</td>";
         echo "<td>" . $row['action'] . "</td>";
         echo "<td>" . $row['description'] . "</td>";
-        echo "<td>" . $row['created_at'] . "</td>";
+        // echo "<td>" . $row['created_at'] . "</td>";
         // echo "<td>" . $row['updated_at'] . "</td>";
         echo "</tr>";
     }

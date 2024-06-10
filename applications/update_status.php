@@ -19,10 +19,10 @@ if ($mysqli->connect_error) {
 }
 
 // Function to log audit actions
-function log_audit_action($mysqli, $admin_username, $action_type, $target_user_id, $description) {
-    $query = "INSERT INTO audit_logs (username, action_type, target_user_id, description) VALUES (?, ?, ?, ?)";
+function log_audit_action($mysqli, $admin_username, $action_type, $description) {
+    $query = "INSERT INTO audit_logs (user_id, action, description) VALUES (?, ?, ?)";
     $stmt = $mysqli->prepare($query);
-    $stmt->bind_param("ssss", $admin_username, $action_type, $target_user_id, $description);
+    $stmt->bind_param("sss", $admin_username, $action_type, $description);
     $stmt->execute();
     $stmt->close();
 }
