@@ -34,7 +34,7 @@ $status = $_POST['status'];
 // Update the verification status
 $query = "UPDATE users SET verification_status = ? WHERE id = ?";
 $stmt = $mysqli->prepare($query);
-$stmt->bind_param("ii", $status, $id);
+$stmt->bind_param("is", $status, $id);
 $stmt->execute();
 $stmt->close();
 
@@ -59,7 +59,7 @@ if ($status == 2) {
 }
 
 // Log the audit action
-log_audit_action($mysqli, $admin_username, $action_type, $id, $description);
+log_audit_action($mysqli, $admin_username, $action_type, $description);
 
 // Redirect back to the previous page or another page
 header("Location: applications.php"); // Replace 'applications.php' with the actual page you want to redirect to
