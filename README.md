@@ -1,13 +1,16 @@
-###ASAN Website Administration
+# ASAN Website Administration
 
-Welcome to the ASAN Website Administration repository! 
-This document provides an overview of the project, including its purpose, features, technologies used, and instructions for setting up and using the application.
+Welcome to the **ASAN Website Administration** repository! This document provides an overview of the project, including its purpose, features, technologies used, and instructions for setting up and using the application.
 
-Repository: [ASAN Website Administration](https://github.com/seanrnp0530/ASAN)
+## Repository
 
-Project Overview
+- **Repo Link**: [ASAN Website Administration](https://github.com/seanrnp0530/ASAN)
 
-Website Name: ASAN Website Administration
+## Project Overview
+
+### Website Name
+
+**ASAN Website Administration**
 
 ### Purpose
 
@@ -60,30 +63,19 @@ Before you begin, ensure you have the following installed on your system:
    composer install
    ```
 
-3. **Database Setup**
-
-   - Create a database for the project.
-   - Import the provided SQL file to set up the necessary tables.
-
-   ```sql
-   CREATE DATABASE asan_admin;
-   USE asan_admin;
-   SOURCE path/to/database.sql;
-   ```
-
-4. **Configuration**
+3. **Configuration**
 
    - Rename the `.env.example` file to `.env`.
    - Update the `.env` file with your database credentials and other configuration settings.
 
    ```env
-   DB_HOST=your_database_host
-   DB_DATABASE=asan_admin
-   DB_USERNAME=your_database_username
-   DB_PASSWORD=your_database_password
+   DB_HOST='localhost';
+   DB_DATABASE='asan_api';
+   DB_USERNAME='root';
+   DB_PASSWORD='(Jfkr7!Gy$Vp@jZR';
    ```
 
-5. **Run the Application**
+4. **Run the Application**
 
    Ensure your web server is configured to serve the application. Navigate to the project directory in your web browser.
 
@@ -91,20 +83,16 @@ Before you begin, ensure you have the following installed on your system:
 
 ### Managing Users
 
-- **Reactivating/Deactivating Users**: Navigate to the user management section to change the status of user accounts.
-- **Approving/Declining Applications**: Review and manage user applications for account verification.
+- **Reactivating/Deactivating Users**: Navigate to the 'Users' section to change the status of user accounts.
+- **Approving/Declining Applications**: Review and manage user applications for account verification in the 'Applications' section.
 
 ### Changing Admin Password
 
-- Go to the admin settings page and follow the prompts to change the admin password. The new password will be securely hashed using bcrypt.
+- Go to the 'Security' section and follow the prompts to change the admin password. The new password will be securely hashed using bcrypt.
 
 ### Viewing Audit Logs
 
-- Access the audit logs section to monitor user activities and administrative actions.
-
-### Tracking Users
-
-- Use the tracking feature to view and manage user profiles and activities.
+- Access the 'Audit Logs' section to monitor user activities and administrative actions.
 
 ## Contribution
 
